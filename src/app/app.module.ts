@@ -5,12 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UserListComponent } from './users/user-list/user-list.component';
-import { TournamentComponent } from './tournaments/tournament/tournament.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {UserService} from './Shared/user.service';
+import { NavbarComponent } from './Shared/Navbar/navbar.component';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule, MatInputModule,
+  MatListModule, MatMenuModule, MatPaginatorModule,
+  MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatToolbarModule
+} from '@angular/material';
+import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
 import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from './Shared/services/authentication.service';
-import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,16 +29,22 @@ import {ReactiveFormsModule} from "@angular/forms";
     UserListComponent,
     TournamentComponent,
     TournamentLeaderboardComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    AppRoutingModule,
   ],
   providers: [
     AuthenticationService,
+    MatCardModule,
+    UserService,
+    TournamentComponent,
+    TournamentLeaderboardComponent
   ],
   bootstrap: [AppComponent]
 })
