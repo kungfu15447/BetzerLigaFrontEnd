@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
-import {User} from "../User.model";
+import {User} from '../User.model';
 
 @Injectable()
 export class AuthenticationService {
 
-  loggedInUser : User;
+  loggedInUser: User;
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(environment.baseURL + 'Token', { username, password })
+    return this.http.post<any>(environment.apiUrl + 'Token', { username, password })
       .pipe(map(response => {
         const token = response.token;
         // login successful if there's a jwt token in the response
@@ -20,7 +20,6 @@ export class AuthenticationService {
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ User: this.loggedInUser, token }));
           // return true to indicate successful login
-          debugger;
           return true;
         } else {
           // return false to indicate failed login
@@ -34,9 +33,9 @@ export class AuthenticationService {
     return currentUser && currentUser.token;
   }
 
-  getUsername(): string {
+  getUser(): User {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    return currentUser && currentUser.username;
+    return currentUser && currentUser.User;
   }
 
   logout(): void {

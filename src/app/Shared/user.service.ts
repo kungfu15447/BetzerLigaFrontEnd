@@ -24,11 +24,17 @@ export class UserService {
   getUsers(): Observable<User[]> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.get<User[]>(environment.baseURL + '/users', httpOptions);
+    return this.http.get<User[]>(environment.apiUrl + 'users', httpOptions);
   }
   getUserById(id: number): Observable<User> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.get<User>(environment.baseURL + '/users' + '/' + id, httpOptions);
+    return this.http.get<User>(environment.apiUrl + 'users' + '/' + id, httpOptions);
+  }
+  updateUser(user: User): Observable<User> {
+    httpOptions.headers =
+      httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
+
+    return this.http.put<User>(environment.apiUrl + '/users' + '/' + user.id, user, httpOptions);
   }
 }

@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../Shared/user.service';
 import {User} from '../../Shared/User.model';
+import {AuthenticationService} from '../../Shared/services/authentication.service';
 
 @Component({
   selector: 'app-user-details',
@@ -11,7 +12,9 @@ import {User} from '../../Shared/User.model';
 export class UserDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router,
+              private authServ: AuthenticationService) {
   }
 
   @Input() user: User;
@@ -24,4 +27,13 @@ export class UserDetailsComponent implements OnInit {
       });
   }
 
+  addFavorite() {
+    const user = this.authServ.getUser();
+    this.authServ.getUser();
+    this.authServ.getUser().following.push(this.user);
+    this.userService.updateUser(user)
+      .subscribe(() => {
+        this.router.navigateByUrl('/users');
+      });
+  }
 }

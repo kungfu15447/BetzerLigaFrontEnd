@@ -2,7 +2,7 @@
      fxFill
      fxLayoutGap="10px">
   <div fxLayout="row">
-    <button class="btn btn-primary" routerLink="/owners">Back</button>
+    <button class="btn btn-primary" routerLink="/users">Back</button>
   </div>
   <div *ngIf="user"
        fxLayout="row" fxLayoutAlign="center top">
@@ -11,12 +11,13 @@
         <h2>{{user.firstname}} {{user.lastname}}</h2>
       </mat-card-header>
       <mat-card-content>
-        <p>Address: {{user.email}}</p>
+        <p>Email: {{user.email}}</p>
         <p>Id: {{user.id}}</p>
       </mat-card-content>
       <mat-card-actions fxLayout="row" fxLayoutGap="5px">
         <span fxFlex></span>
       </mat-card-actions>
+      <button class="btn btn-primary" (click)="addFavorite()">Add favorite</button>
     </mat-card>
   </div>
   <h4 *ngIf="!user">Loading.....</h4>
