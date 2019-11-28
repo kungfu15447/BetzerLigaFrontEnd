@@ -3,10 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
+import {User} from "../User.model";
 
 @Injectable()
 export class AuthenticationService {
 
+  loggedInUser : User;
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<boolean> {
@@ -16,8 +18,9 @@ export class AuthenticationService {
         // login successful if there's a jwt token in the response
         if (token) {
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ username, token }));
+          localStorage.setItem('currentUser', JSON.stringify({ User: this.loggedInUser, token }));
           // return true to indicate successful login
+          debugger;
           return true;
         } else {
           // return false to indicate failed login

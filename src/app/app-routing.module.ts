@@ -6,13 +6,16 @@ import {CommonModule} from '@angular/common';
 
 import {TournamentComponent} from './tournaments/tournament/tournament.component';
 import {TournamentLeaderboardComponent} from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
+import {LoginComponent} from "./login/login.component";
 
 
 const routes: Routes = [
   {path: 'tournament/:id', component: TournamentComponent},
   {path: 'leaderboard', component: TournamentLeaderboardComponent},
   {path: 'users', component: UserListComponent},
-  {path: 'users/:id', component: UserDetailsComponent}
+  {path: 'users/:id', component: UserDetailsComponent},
+  {path: 'login', component: LoginComponent}
+
 ];
 
 @NgModule({

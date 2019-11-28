@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
@@ -20,7 +19,7 @@ import {
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
 import { LoginComponent } from './login/login.component';
-import {AuthenticationService} from './Shared/services/authentication.service';
+import { AuthenticationService } from './Shared/services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +37,7 @@ import {AuthenticationService} from './Shared/services/authentication.service';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    MatCardModule,
   ],
   providers: [
     AuthenticationService,
