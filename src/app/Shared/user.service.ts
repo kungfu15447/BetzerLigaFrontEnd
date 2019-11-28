@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {Observable} from 'rxjs';
 import {User} from './User.model';
 import {environment} from '../../environments/environment';
