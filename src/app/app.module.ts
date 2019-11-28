@@ -22,6 +22,8 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
 import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from './Shared/services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AuthenticationService} from "./Shared/services/authentication.service";
+import {AuthGuard} from "./authGuard/auth.guard";
 
 @NgModule({
   declarations: [
@@ -42,9 +44,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     MatCardModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [
+    AuthGuard,
     AuthenticationService,
     MatCardModule,
     UserService,
