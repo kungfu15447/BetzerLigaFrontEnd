@@ -19,6 +19,8 @@ import {
 } from '@angular/material';
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
+import { LoginComponent } from './login/login.component';
+import {AuthenticationService} from './Shared/services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
     UserListComponent,
     NavbarComponent,
     TournamentComponent,
-    TournamentLeaderboardComponent
+    TournamentLeaderboardComponent,
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +39,10 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    MatCardModule
   ],
   providers: [
+    AuthenticationService,
+    MatCardModule,
     UserService,
     TournamentComponent,
     TournamentLeaderboardComponent
