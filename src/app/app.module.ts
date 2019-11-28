@@ -25,7 +25,9 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
     AppComponent,
     UserDetailsComponent,
     UserListComponent,
-    NavbarComponent
+    NavbarComponent,
+    TournamentComponent,
+    TournamentLeaderboardComponent
   ],
   imports: [
     BrowserModule,
