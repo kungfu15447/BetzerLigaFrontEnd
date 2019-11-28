@@ -8,6 +8,9 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import {HttpClientModule} from '@angular/common/http';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
+import { LoginComponent } from './login/login.component';
+import {AuthenticationService} from './Shared/services/authentication.service';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,14 +18,18 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
     UserDetailsComponent,
     UserListComponent,
     TournamentComponent,
-    TournamentLeaderboardComponent
+    TournamentLeaderboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
