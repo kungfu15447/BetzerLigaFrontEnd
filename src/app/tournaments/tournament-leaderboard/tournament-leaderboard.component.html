@@ -1,0 +1,16 @@
+<div *ngIf="tournaments">
+  <h2>Leaderboard of ongoing tournament:</h2>
+
+  <div *ngFor="let tournament of tournaments">
+    <div *ngIf="!tournament.isDone">
+      <ul class="leaderboard">
+        <h3>Tournament: {{tournament.name}}</h3>
+          <div *ngFor="let user of tournament.participants">
+            <h4>Name: {{user.user.Firstname}} {{user.user.Lastname}} Points: {{user.totalUserPoints}}</h4>
+          </div>
+        </ul>
+    </div>
+  </div>
+</div>
+
+
