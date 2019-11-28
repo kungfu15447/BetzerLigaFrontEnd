@@ -3,9 +3,9 @@ import {Match} from './Match.model';
 
 export interface UserMatch {
   Id: number;
-  User: User[];
+  User: User;
   UserId: number;
-  Match: Match[];
+  Match: Match;
   MatchId: number;
   HomeTip: number;
   GuestTip: number;
