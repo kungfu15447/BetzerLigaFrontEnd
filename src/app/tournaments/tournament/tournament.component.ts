@@ -11,11 +11,11 @@ import {TournamentService} from '../shared/tournament.service';
 export class TournamentComponent implements OnInit {
   tournament: Tournament;
   constructor(private route: ActivatedRoute,
-              private tourService: TournamentService,
-              private location: Location
+              private tourService: TournamentService
   ) { }
 
   ngOnInit() {
+    this.getTour();
   }
 
   getTour(): void {

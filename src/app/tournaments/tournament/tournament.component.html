@@ -1,1 +1,8 @@
-<p>tournament works!</p>
+<div *ngIf="tournament">
+  <h2>Tournament: {{tournament.name}}</h2>
+  <ul class="rounds">
+    <div *ngFor="let round of tournament.rounds">
+      <h4>Round {{round.RoundNumber}}</h4>
+    </div>
+  </ul>
+</div>
