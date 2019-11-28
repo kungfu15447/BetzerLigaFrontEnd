@@ -17,6 +17,8 @@ import {
   MatListModule, MatMenuModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
+import { TournamentComponent } from './tournaments/tournament/tournament.component';
+import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {
     MatCardModule
   ],
   providers: [
-    UserService
+    UserService,
+    TournamentComponent,
+    TournamentLeaderboardComponent
   ],
   bootstrap: [AppComponent]
 })
