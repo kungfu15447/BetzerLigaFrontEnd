@@ -25,11 +25,11 @@ export class UserService {
   getUsers(): Observable<User[]> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.get<User[]>(environment.baseURL + '/users', httpOptions);
+    return this.http.get<User[]>(environment.baseURL + 'users', httpOptions);
   }
   getUserById(id: number): Observable<User> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.get<User>(environment.baseURL + '/users' + '/' + id, httpOptions);
+    return this.http.get<User>(environment.baseURL + 'users' + '/' + id, httpOptions);
   }
 }

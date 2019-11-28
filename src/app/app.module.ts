@@ -19,7 +19,8 @@ import {
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
 import { LoginComponent } from './login/login.component';
-import { AuthenticationService } from './Shared/services/authentication.service';
+import {AuthenticationService} from "./Shared/services/authentication.service";
+import {AuthGuard} from "./authGuard/auth.guard";
 
 @NgModule({
   declarations: [
@@ -37,9 +38,10 @@ import { AuthenticationService } from './Shared/services/authentication.service'
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    MatCardModule,
+    MatCardModule
   ],
   providers: [
+    AuthGuard,
     AuthenticationService,
     MatCardModule,
     UserService,
