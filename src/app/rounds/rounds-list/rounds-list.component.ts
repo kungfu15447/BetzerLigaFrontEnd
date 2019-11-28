@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Round} from '../../Shared/Round.model';
+import {Observable} from 'rxjs';
+import {RoundService} from '../../Shared/round.service';
 
 @Component({
   selector: 'app-rounds-list',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoundsListComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private roundService: RoundService) { }
+  rounds: Round[];
   ngOnInit() {
+    this.refresh();
   }
 
+  refresh(){
+    this.roundService.getRounds().subscribe(listOfRounds => {
+      this.rounds = listOfRounds;
+    });
+  }
 }
