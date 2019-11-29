@@ -9,5 +9,5 @@ export interface Round {
   tournamentId?: number;
   totalGoals: number;
   matches?: Match[];
-  roundPoints?: UserRound;
+  roundPoints?: UserRound[];
 }
