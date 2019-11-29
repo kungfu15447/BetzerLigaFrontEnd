@@ -28,6 +28,7 @@ export class UserDetailsComponent implements OnInit {
   }
   addFavorite() {
     const user = this.authServ.getUser();
+    debugger;
     this.SafetyCheck(user.following.push(this.user));
     this.userService.updateUser(user)
       .subscribe(() => {
