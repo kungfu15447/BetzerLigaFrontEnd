@@ -26,8 +26,8 @@ import {AuthGuard} from "./authGuard/auth.guard";
 import { RoundsDetailsComponent } from './rounds/rounds-details/rounds-details.component';
 import { RoundAddComponent } from './rounds/round-add/round-add.component';
 import { RoundUpdateComponent } from './rounds/round-update/round-update.component';
-import { UserRoundsComponent } from './rounds/user-rounds/user-rounds.component';
 import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-list.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +42,8 @@ import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-l
     RoundsDetailsComponent,
     RoundAddComponent,
     RoundUpdateComponent,
-    UserRoundsComponent,
-    UserRoundsListComponent
+    UserRoundsListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
