@@ -6,6 +6,8 @@ import {CommonModule} from '@angular/common';
 import {TournamentComponent} from './tournaments/tournament/tournament.component';
 import {TournamentLeaderboardComponent} from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
 import {LoginComponent} from './login/login.component';
+import {RoundsListComponent} from './rounds/rounds-list/rounds-list.component';
+import {AuthGuard} from './authGuard/auth.guard';
 
 
 const routes: Routes = [
@@ -13,8 +15,10 @@ const routes: Routes = [
   {path: 'leaderboard', component: TournamentLeaderboardComponent},
   {path: 'users', component: UserListComponent},
   {path: 'users/:id', component: UserDetailsComponent},
+  {path: 'rounds', component: RoundsListComponent},
+  {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
+  {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}
-
 ];
 
 @NgModule({

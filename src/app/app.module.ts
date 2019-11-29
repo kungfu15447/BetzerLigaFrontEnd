@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { RoundsListComponent } from './rounds/rounds-list/rounds-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './Shared/user.service';
@@ -19,7 +20,9 @@ import {
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
 import { LoginComponent } from './login/login.component';
-import { AuthenticationService } from './Shared/services/authentication.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AuthGuard} from './authGuard/auth.guard';
+import {AuthenticationService} from './Shared/services/authentication.service';
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { AuthenticationService } from './Shared/services/authentication.service'
     UserDetailsComponent,
     UserListComponent,
     NavbarComponent,
+    RoundsListComponent,
     TournamentComponent,
     TournamentLeaderboardComponent,
     LoginComponent,
@@ -39,9 +43,13 @@ import { AuthenticationService } from './Shared/services/authentication.service'
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    MatCardModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
     MatCardModule
   ],
   providers: [
+    AuthGuard,
     AuthenticationService,
     MatCardModule,
     UserService,

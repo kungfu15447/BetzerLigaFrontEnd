@@ -1,0 +1,7 @@
+<h4> Welcome to rounds </h4>
+<ul *ngIf="rounds">
+  <li *ngFor="let round of rounds">
+    <a>{{round.roundNumber}}</a>
+    <button (click)="deleteRound(round.id)">Delete</button>
+  </li>
+</ul>
