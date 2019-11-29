@@ -8,17 +8,20 @@ import {TournamentLeaderboardComponent} from './tournaments/tournament-leaderboa
 import {RoundsListComponent} from './rounds/rounds-list/rounds-list.component';
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./authGuard/auth.guard";
+import {AppComponent} from "./app.component";
+import {HomeComponent} from "./home/home.component";
 
 
 const routes: Routes = [
-  {path: 'tournament/:id', component: TournamentComponent},
-  {path: 'leaderboard', component: TournamentLeaderboardComponent},
-  {path: 'users', component: UserListComponent},
-  {path: 'users/:id', component: UserDetailsComponent},
-  {path: 'rounds', component: RoundsListComponent},
+  {path: 'tournament/:id', component: TournamentComponent, canActivate: [AuthGuard]},
+  {path: 'leaderboard', component: TournamentLeaderboardComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
   {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent}
+  {path: 'rounds', component: RoundsListComponent, canActivate: [AuthGuard]},
+  {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
+  {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: '', component: LoginComponent}
 ];
 
 @NgModule({

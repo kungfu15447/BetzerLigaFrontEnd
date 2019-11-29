@@ -22,8 +22,8 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
 import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from './Shared/services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthenticationService} from "./Shared/services/authentication.service";
 import {AuthGuard} from "./authGuard/auth.guard";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import {AuthGuard} from "./authGuard/auth.guard";
     TournamentComponent,
     TournamentLeaderboardComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
