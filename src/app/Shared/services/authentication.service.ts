@@ -8,17 +8,18 @@ import {User} from "../User.model";
 @Injectable()
 export class AuthenticationService {
 
-  loggedInUser : User;
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<boolean> {
     return this.http.post<any>(environment.baseURL + 'Token', { username, password })
       .pipe(map(response => {
-        const token = response.token;
+        const token = response.token
+        const user = response.user;
         // login successful if there's a jwt token in the response
         if (token) {
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ User: this.loggedInUser, token }));
+          localStorage.setItem('currentUser', JSON.stringify({ User: user, token }));
+          debugger;
           // return true to indicate successful login
           return true;
         } else {
@@ -38,7 +39,7 @@ export class AuthenticationService {
     return currentUser && currentUser.username;
   }
 
-  logout(): void {
+    logout(): void {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
   }
