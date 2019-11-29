@@ -4,7 +4,7 @@ import {Match} from './Match.model';
 export interface Round {
   id: number;
   roundNumber: number;
-  tournament: Tournament;
+  tournament?: Tournament;
   totalGoals: number;
-  matches: Match[];
+  matches?: Match[];
 }

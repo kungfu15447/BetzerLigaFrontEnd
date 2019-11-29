@@ -13,7 +13,7 @@ import {
   MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
-  MatDividerModule, MatInputModule,
+  MatDividerModule, MatFormFieldModule, MatInputModule,
   MatListModule, MatMenuModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
@@ -22,11 +22,10 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
 import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from './Shared/services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthenticationService} from "./Shared/services/authentication.service";
 import {AuthGuard} from "./authGuard/auth.guard";
 import { RoundsDetailsComponent } from './rounds/rounds-details/rounds-details.component';
-import { PetAddComponent } from './rounds/round-add/pet-add.component';
 import { RoundAddComponent } from './rounds/round-add/round-add.component';
+import { RoundUpdateComponent } from './rounds/round-update/round-update.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +38,8 @@ import { RoundAddComponent } from './rounds/round-add/round-add.component';
     LoginComponent,
     NavbarComponent,
     RoundsDetailsComponent,
-    PetAddComponent,
-    RoundAddComponent
+    RoundAddComponent,
+    RoundUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +50,8 @@ import { RoundAddComponent } from './rounds/round-add/round-add.component';
     MatCardModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [
     AuthGuard,

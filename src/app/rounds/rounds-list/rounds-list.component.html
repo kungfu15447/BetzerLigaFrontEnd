@@ -2,7 +2,8 @@
 <ul *ngIf="rounds">
   <li *ngFor="let round of rounds">
     <a routerLink="/rounds/{{round.id}}">{{round.roundNumber}}</a>
-    <button routerLink="/rounds"
     <button (click)="deleteRound(round.id)">Delete</button>
+    <button routerLink="/round-update/{{round.id}}">Update</button>
   </li>
 </ul>
+<button routerLink="/round-add">Add</button>
