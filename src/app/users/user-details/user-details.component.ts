@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../Shared/user.service';
 import {User} from '../../Shared/User.model';
 import {AuthenticationService} from '../../Shared/services/authentication.service';
+import {tryCatch} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-user-details',
@@ -18,7 +19,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   @Input() user: User;
-
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserById(id)
@@ -26,14 +26,20 @@ export class UserDetailsComponent implements OnInit {
         this.user = restUser;
       });
   }
-
   addFavorite() {
     const user = this.authServ.getUser();
-    this.authServ.getUser();
-    this.authServ.getUser().following.push(this.user);
+    this.SafetyCheck(user.following.push(this.user));
     this.userService.updateUser(user)
       .subscribe(() => {
         this.router.navigateByUrl('/users');
       });
+    console.log(user.following);
+  }
+  SafetyCheck(fn: any) {
+    try{
+      return fn();
+    } catch (e) {
+      return undefined;
+    }
   }
 }
