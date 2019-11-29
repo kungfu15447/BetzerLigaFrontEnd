@@ -24,6 +24,9 @@ import {AuthenticationService} from './Shared/services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AuthenticationService} from "./Shared/services/authentication.service";
 import {AuthGuard} from "./authGuard/auth.guard";
+import { RoundsDetailsComponent } from './rounds/rounds-details/rounds-details.component';
+import { PetAddComponent } from './rounds/round-add/pet-add.component';
+import { RoundAddComponent } from './rounds/round-add/round-add.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import {AuthGuard} from "./authGuard/auth.guard";
     TournamentComponent,
     TournamentLeaderboardComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    RoundsDetailsComponent,
+    PetAddComponent,
+    RoundAddComponent
   ],
   imports: [
     BrowserModule,

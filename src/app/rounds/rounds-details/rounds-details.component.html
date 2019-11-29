@@ -1,0 +1,10 @@
+<button routerLink="/rounds"> Back </button>
+<h1> Details about this round {{round.id}}</h1>
+<div *ngIf="round">
+  <h3>Round number: {{round.roundNumber}}</h3>
+  <h3>Total goals this round: {{round.totalGoals}}</h3>
+</div>
+<div *ngIf="!round">
+  <h2>No round</h2>
+</div>
+
