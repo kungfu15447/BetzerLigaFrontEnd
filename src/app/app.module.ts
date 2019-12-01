@@ -22,7 +22,7 @@ import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderb
 import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from './Shared/services/authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthGuard} from "./authGuard/auth.guard";
+import {AuthGuard} from './authGuard/auth.guard';
 import { RoundsDetailsComponent } from './rounds/rounds-details/rounds-details.component';
 import { RoundAddComponent } from './rounds/round-add/round-add.component';
 import { RoundUpdateComponent } from './rounds/round-update/round-update.component';
