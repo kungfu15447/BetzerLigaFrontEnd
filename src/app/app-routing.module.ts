@@ -12,6 +12,7 @@ import {RoundsDetailsComponent} from './rounds/rounds-details/rounds-details.com
 import {RoundAddComponent} from './rounds/round-add/round-add.component';
 import {RoundUpdateComponent} from './rounds/round-update/round-update.component';
 import {HomeComponent} from "./home/home.component";
+import {RulesComponent} from "./rules/rules.component";
 
 
 
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'rounds', component: RoundsListComponent},
   {path: 'rounds/:id', component: RoundsDetailsComponent},
   {path: 'round-add', component: RoundAddComponent},
-  {path: 'round-update/:id', component: RoundUpdateComponent}
+  {path: 'round-update/:id', component: RoundUpdateComponent},
+  {path: 'rules', component: RulesComponent}
 ];
 
 @NgModule({
