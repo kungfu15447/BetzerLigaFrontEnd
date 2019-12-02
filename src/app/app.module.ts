@@ -28,6 +28,7 @@ import { RoundAddComponent } from './rounds/round-add/round-add.component';
 import { RoundUpdateComponent } from './rounds/round-update/round-update.component';
 import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-list.component';
 import { HomeComponent } from './home/home.component';
+import { RulesComponent } from './rules/rules.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeComponent } from './home/home.component';
     RoundAddComponent,
     RoundUpdateComponent,
     UserRoundsListComponent,
-    HomeComponent
+    HomeComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule,
