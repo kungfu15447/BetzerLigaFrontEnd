@@ -58,7 +58,8 @@ import { RulesComponent } from './rules/rules.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     AuthGuard,
