@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../Shared/user.service';
+import {AuthenticationService} from '../../Shared/services/authentication.service';
+import {User} from '../../Shared/User.model';
 
 @Component({
   selector: 'app-user-list',
@@ -7,10 +9,13 @@ import {UserService} from '../../Shared/user.service';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+  loggedInUser: User;
   users: any = [];
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private authServ: AuthenticationService) { }
 
   ngOnInit() {
+    this.loggedInUser = this.authServ.getUser();
     this.getUsers();
   }
   getUsers(): void {

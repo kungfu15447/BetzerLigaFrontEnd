@@ -7,6 +7,7 @@ import {User} from '../User.model';
 
 @Injectable()
 export class AuthenticationService {
+  userLoggedIn: User;
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<boolean> {
@@ -19,6 +20,7 @@ export class AuthenticationService {
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ User: user, token }));
           // return true to indicate successful login
+          this.userLoggedIn = user;
           return true;
         } else {
           // return false to indicate failed login
@@ -33,8 +35,7 @@ export class AuthenticationService {
   }
 
   getUser(): User {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    return currentUser && currentUser.User;
+    return this.userLoggedIn;
   }
 
     logout(): void {

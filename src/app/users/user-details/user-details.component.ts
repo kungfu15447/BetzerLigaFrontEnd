@@ -28,13 +28,13 @@ export class UserDetailsComponent implements OnInit {
   }
   addFavorite() {
     const user = this.authServ.getUser();
-    debugger;
+    user.following = user.following;
     this.SafetyCheck(user.following.push(this.user));
+    debugger;
     this.userService.updateUser(user)
       .subscribe(() => {
         this.router.navigateByUrl('/users');
       });
-    console.log(user.following);
   }
   SafetyCheck(fn: any) {
     try{
