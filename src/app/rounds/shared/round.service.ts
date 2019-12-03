@@ -17,7 +17,19 @@ export class RoundService {
     (this.apiUrl);
   }
 
-  deleteRound(id: number): Observable<any>{
+  getOneRound(id: number): Observable<Round> {
+    return this.http.get<Round>(this.apiUrl + '/' + id);
+  }
+
+  addRound(round: Round): Observable<Round> {
+    return this.http.post<Round>(this.apiUrl, round);
+  }
+
+  deleteRound(id: number): Observable<any> {
     return this.http.delete(this.apiUrl + '/' + id );
+  }
+
+  updateRound(round: Round): Observable<Round> {
+    return this.http.put<Round>(this.apiUrl + '/' + round.id, round);
   }
 }

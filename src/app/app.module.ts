@@ -13,7 +13,7 @@ import {
   MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
-  MatDividerModule, MatInputModule,
+  MatDividerModule, MatFormFieldModule, MatInputModule,
   MatListModule, MatMenuModule, MatPaginatorModule,
   MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
@@ -23,7 +23,12 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AuthGuard} from './authGuard/auth.guard';
 import {AuthenticationService} from './Shared/services/authentication.service';
-
+import { RoundsDetailsComponent } from './rounds/rounds-details/rounds-details.component';
+import { RoundAddComponent } from './rounds/round-add/round-add.component';
+import { RoundUpdateComponent } from './rounds/round-update/round-update.component';
+import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-list.component';
+import { HomeComponent } from './home/home.component';
+import { RulesComponent } from './rules/rules.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,13 @@ import {AuthenticationService} from './Shared/services/authentication.service';
     TournamentComponent,
     TournamentLeaderboardComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    RoundsDetailsComponent,
+    RoundAddComponent,
+    RoundUpdateComponent,
+    UserRoundsListComponent,
+    HomeComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +57,8 @@ import {AuthenticationService} from './Shared/services/authentication.service';
     MatCardModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [
     AuthGuard,
