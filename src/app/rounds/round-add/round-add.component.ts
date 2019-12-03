@@ -13,7 +13,8 @@ export class RoundAddComponent implements OnInit {
 
   roundForm = new FormGroup({
     roundNumber: new FormControl(''),
-    totalGoals: new FormControl('')
+    totalGoals: new FormControl(''),
+    tournamentId: new FormControl('')
   });
   constructor(private roundService: RoundService,
               private router: Router) { }
@@ -26,6 +27,7 @@ export class RoundAddComponent implements OnInit {
     const round = {
       roundNumber: roundFromFields.roundNumber,
       totalGoals: roundFromFields.totalGoals,
+      tournamentId: roundFromFields.tournamentId
     };
     this.roundService.addRound(round as Round)
       .subscribe(() => {

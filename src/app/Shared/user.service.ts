@@ -4,7 +4,7 @@ import {observableToBeFn} from 'rxjs/internal/testing/TestScheduler';
 import {Observable} from 'rxjs';
 import {User} from './User.model';
 import {environment} from '../../environments/environment';
-import {AuthenticationService} from "./services/authentication.service";
+import {AuthenticationService} from './services/authentication.service';
 
 
 const httpOptions = {

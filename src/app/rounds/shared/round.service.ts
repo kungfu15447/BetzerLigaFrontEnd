@@ -32,4 +32,8 @@ export class RoundService {
   updateRound(round: Round): Observable<Round> {
     return this.http.put<Round>(this.apiUrl + '/' + round.id, round);
   }
+
+  getCurrentRound(): Observable<Round[]> {
+    return this.http.get<Round[]>(this.apiUrl + '?tournament=tour');
+  }
 }

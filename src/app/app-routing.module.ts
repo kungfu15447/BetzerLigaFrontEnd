@@ -11,6 +11,7 @@ import {AuthGuard} from './authGuard/auth.guard';
 import {RoundsDetailsComponent} from './rounds/rounds-details/rounds-details.component';
 import {RoundAddComponent} from './rounds/round-add/round-add.component';
 import {RoundUpdateComponent} from './rounds/round-update/round-update.component';
+import {UserRoundsListComponent} from './rounds/user-rounds-list/user-rounds-list.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'rounds/:id', component: RoundsDetailsComponent},
   {path: 'round-add', component: RoundAddComponent},
   {path: 'round-update/:id', component: RoundUpdateComponent},
+  {path: 'user-rounds-list', component: UserRoundsListComponent},
   {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
   {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}

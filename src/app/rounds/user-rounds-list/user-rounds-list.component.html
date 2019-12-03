@@ -1,3 +1,6 @@
-<div *ngFor="let userRound of round.roundPoints">
-  {{userRound.user.firstname}} {{userRound.user.lastname}}
+<div *ngIf="round">
+  <h2>Round {{round.roundNumber}}</h2>
+<li *ngFor="let userRound of round.roundPoints">
+  <a>{{userRound.user.firstname}} {{userRound.user.lastname}} || {{userRound.userPoints}}</a>
+</li>
 </div>
