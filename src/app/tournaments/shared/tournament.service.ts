@@ -16,7 +16,7 @@ export class TournamentService {
     return this.http.get<Tournament>(url);
   }
 
-  getAllTour(): Observable<Tournament[]> {
-    return this.http.get<Tournament[]>(this.tourURL);
+  getAllTour(query: string): Observable<Tournament[]> {
+    return this.http.get<Tournament[]>(this.tourURL + '?tournament=' + query);
   }
 }
