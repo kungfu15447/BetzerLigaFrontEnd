@@ -7,7 +7,6 @@ import {Tournament} from '../../Shared/Tournament.model';
   providedIn: 'root'
 })
 export class TournamentService {
-
   private tourURL = 'https://localhost:65007/api/tournaments';
   constructor(private http: HttpClient) { }
 
