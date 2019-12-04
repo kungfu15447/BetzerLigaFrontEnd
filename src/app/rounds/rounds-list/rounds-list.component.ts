@@ -24,7 +24,7 @@ export class RoundsListComponent implements OnInit {
       .subscribe(listOfRounds => this.rounds = listOfRounds);
   }
 
-  deleteRound(id: number){
+  deleteRound(id: number) {
     this.roundService.deleteRound(id)
       .subscribe(message => {
         console.log('Deleted user, got message: ' + message);

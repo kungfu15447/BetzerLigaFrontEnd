@@ -11,6 +11,7 @@
     <p>Id: {{user.id}}</p>
     <p>Following: {{user.following}}</p>
     <button class="btn btn-primary" (click)="addFavorite()">Add favorite</button>
+        <span fxFlex></span>
   </div>
   <h4 *ngIf="!user">Loading.....</h4>
 </div>

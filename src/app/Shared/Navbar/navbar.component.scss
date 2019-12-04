@@ -3,7 +3,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: forestgreen;
 }
 
 li {
@@ -14,10 +14,19 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 13px 30px;
   text-decoration: none;
+  font-weight: bold;
+
 }
 
 li a:hover {
-  background-color: #111;
+  background-color: darkgreen;
+}
+
+.mat-icon{
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px 45px;
+  -webkit-text-fill-color: white;
 }

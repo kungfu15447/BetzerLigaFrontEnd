@@ -35,7 +35,8 @@ export class AuthenticationService {
   }
 
   getUser(): User {
-    return this.userLoggedIn;
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser && currentUser.user;
   }
 
     logout(): void {

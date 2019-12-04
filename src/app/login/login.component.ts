@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthenticationService} from '../Shared/services/authentication.service';
 
-
-
 @Component({
   templateUrl: 'login.component.html'
 })
@@ -41,7 +39,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     this.loading = true;
     this.authenticationService.login(this.username.value, this.password.value)
       .subscribe(
