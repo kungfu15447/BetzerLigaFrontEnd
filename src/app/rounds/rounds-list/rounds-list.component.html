@@ -2,9 +2,9 @@
 <ul *ngIf="rounds">
   <li *ngFor="let round of rounds">
     <a routerLink="/rounds/{{round.id}}">{{round.roundNumber}} | Tournament name:{{round.tournament.name}}</a>
-    <button mat-raised-button (click)="deleteRound(round.id)">Delete</button>
-    <button mat-raised-button routerLink="/round-update/{{round.id}}">Update</button>
-    <button mat-raised-button routerLink="/user-rounds-list/{{round.id}}">See Users</button>
+    <button (click)="deleteRound(round.id)">Delete</button>
+    <button routerLink="/round-update/{{round.id}}">Update</button>
+    <button routerLink="/user-rounds-list/{{round.id}}">See Users</button>
   </li>
 </ul>
-<button mat-raised-button color="primary" routerLink="/round-add">Add</button>
+<button color="primary" routerLink="/round-add">Add</button>

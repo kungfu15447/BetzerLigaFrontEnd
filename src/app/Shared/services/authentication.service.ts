@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {environment} from '../../../environments/environment';
-import {User} from "../User.model";
+import {User} from '../User.model';
 
 @Injectable()
 export class AuthenticationService {
@@ -33,9 +33,9 @@ export class AuthenticationService {
     return currentUser && currentUser.token;
   }
 
-  getUsername(): string {
+  getUser(): User {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    return currentUser && currentUser.username;
+    return currentUser && currentUser.user;
   }
 
     logout(): void {

@@ -1,21 +1,16 @@
-<mat-card fxFlex="33">
+
   <form [formGroup]="roundForm" (ngSubmit)="save()">
     <div fxLayout="column">
-      <mat-form-field>
-        <input matInput placeholder="Round number" formControlName="roundNumber">
-      </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Total goals" formControlName="totalGoals">
-      </mat-form-field>
+        <input placeholder="Round number" formControlName="roundNumber">
 
-      <mat-form-field>
-        <input matInput placeholder="Tournament id" formControlName="tournamentId">
-      </mat-form-field>
+        <input placeholder="Total goals" formControlName="totalGoals">
+
+        <input placeholder="Tournament id" formControlName="tournamentId">
+
       <div fxLayoutAlign="end center">
-        <button mat-raised-button color="primary" type="submit">Save</button>
+        <button color="primary" type="submit">Save</button>
       </div>
 
     </div>
   </form>
-</mat-card>

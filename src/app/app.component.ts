@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthenticationService} from "./Shared/services/authentication.service";
+import {AuthenticationService} from './Shared/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +10,12 @@ export class AppComponent {
   title = 'BetzerLigaFrontEnd';
   constructor(private authService: AuthenticationService) {}
 
-  IsUserLoggedIn() : boolean
+  IsUserLoggedIn(): boolean
   {
 
-    if(this.authService.getUsername() === null)
-    {
+    if (this.authService.getUser() === null) {
       return false;
-    }
-    else
-    {
+    } else {
       return true;
     }
   }

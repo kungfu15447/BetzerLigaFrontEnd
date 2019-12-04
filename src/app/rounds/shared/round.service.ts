@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Round} from '../../Shared/Round.model';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoundService {
 
-  apiUrl = 'http://localhost:56761/api/rounds';
+  apiUrl = environment.apiUrl + 'rounds';
 
   constructor(private http: HttpClient) { }
 

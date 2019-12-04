@@ -9,14 +9,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './Shared/user.service';
 import { NavbarComponent } from './Shared/Navbar/navbar.component';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatCardModule,
-  MatDividerModule, MatFormFieldModule, MatIconModule, MatInputModule,
-  MatListModule, MatMenuModule, MatPaginatorModule,
-  MatProgressSpinnerModule, MatSelectModule, MatSnackBarModule, MatToolbarModule
-} from '@angular/material';
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';
 import { LoginComponent } from './login/login.component';
@@ -53,17 +45,11 @@ import { RulesComponent } from './rules/rules.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    MatCardModule,
-    MatButtonModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule
   ],
   providers: [
     AuthGuard,
     AuthenticationService,
-    MatCardModule,
     UserService,
     TournamentComponent,
     TournamentLeaderboardComponent
