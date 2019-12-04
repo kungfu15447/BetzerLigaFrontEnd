@@ -57,7 +57,6 @@ import { RulesComponent } from './rules/rules.component';
     MatCardModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatCardModule,
     MatFormFieldModule
   ],
   providers: [

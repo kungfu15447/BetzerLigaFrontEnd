@@ -1,5 +1,6 @@
 import {UserTour} from './UserTour.model';
 import {UserMatch} from './UserMatch.model';
+import {Following} from './Following.model';
 
 export interface User {
   id: number;
@@ -10,5 +11,5 @@ export interface User {
   password: string;
   tournaments: UserTour[];
   tips: UserMatch[];
-  following: User[];
+  following: Following[];
 }

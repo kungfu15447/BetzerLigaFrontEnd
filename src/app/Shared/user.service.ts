@@ -34,7 +34,6 @@ export class UserService {
   updateUser(user: User): Observable<User> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-
     return this.http.put<User>(environment.apiUrl + 'users' + '/' + user.id, user, httpOptions);
   }
 }
