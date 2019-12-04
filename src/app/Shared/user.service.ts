@@ -36,10 +36,4 @@ export class UserService {
       httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
     return this.http.put<User>(environment.apiUrl + 'users' + '/' + user.id, user, httpOptions);
   }
-
-  updateUser(user: User):Observable<User>{
-    httpOptions.headers =
-      httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.put<User>(environment.baseURL + 'users/' + user.id, httpOptions);
-  }
 }
