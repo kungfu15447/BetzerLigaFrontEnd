@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
+import {User} from '../User.model';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +17,10 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     // remove user from local storage to log user out
     this.authService.logout();
+  }
+  getUser(): User {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return currentUser && currentUser.user;
   }
 
 }

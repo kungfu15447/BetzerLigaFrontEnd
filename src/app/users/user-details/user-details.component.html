@@ -2,22 +2,20 @@
      fxFill
      fxLayoutGap="10px">
   <div fxLayout="row">
-    <button class="btn btn-primary" routerLink="/owners">Back</button>
+    <button class="btn btn-primary" routerLink="/users">Back</button>
   </div>
   <div *ngIf="user"
        fxLayout="row" fxLayoutAlign="center top">
-    <mat-card fxFlex="33">
-      <mat-card-header>
-        <h2>{{user.firstname}} {{user.lastname}}</h2>
-      </mat-card-header>
-      <mat-card-content>
-        <p>Address: {{user.email}}</p>
-        <p>Id: {{user.id}}</p>
-      </mat-card-content>
-      <mat-card-actions fxLayout="row" fxLayoutGap="5px">
-        <span fxFlex></span>
-      </mat-card-actions>
-    </mat-card>
+    <h2>{{user.firstname}} {{user.lastname}}</h2>
+    <p>Email: {{user.email}}</p>
+    <p>Id: {{user.id}}</p>
+      <div *ngIf="!checkIfUserIsFollowed()">
+        <button class="btn btn-primary" (click)="addFavorite()">Add favorite</button>
+      </div>
+    <div *ngIf="checkIfUserIsFollowed()">
+      <button class="btn btn-danger" (click)="removeFavorite()">Remove from favorite</button>
+    </div>
+    <span fxFlex></span>
   </div>
   <h4 *ngIf="!user">Loading.....</h4>
 </div>

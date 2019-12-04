@@ -1,7 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../Shared/user.service';
 import {User} from '../../Shared/User.model';
+import {AuthenticationService} from '../../Shared/services/authentication.service';
+import {Following} from '../../Shared/Following.model';
+import {forEachComment} from 'tslint';
 
 @Component({
   selector: 'app-user-details',
@@ -11,17 +14,65 @@ import {User} from '../../Shared/User.model';
 export class UserDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router,
+              private authServ: AuthenticationService) {
   }
 
+  id: number;
   @Input() user: User;
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    this.id = +this.route.snapshot.paramMap.get('id');
+    const id = this.id;
     this.userService.getUserById(id)
       .subscribe(restUser => {
         this.user = restUser;
       });
   }
 
+  addFavorite() {
+    const user = this.authServ.getUser();
+    const follower: Following = {
+      authorizedUserId: user.id,
+      authorizedUser: null,
+      followId: this.id,
+      follow: null
+    };
+    user.following.push(follower);
+    this.userService.updateUser(user)
+      .subscribe();
+  }
+
+  removeFavorite() {
+    const user = this.authServ.getUser();
+    const follower: Following = {
+      authorizedUserId: user.id,
+      authorizedUser: null,
+      followId: this.id,
+      follow: null
+    };
+    const index: number = user.following.indexOf(follower);
+    user.following.splice(index, 1);
+    this.userService.updateUser(user)
+      .subscribe();
+  }
+  SafetyCheck(fn: any) {
+    try {
+      return fn();
+    } catch (e) {
+      return undefined;
+    }
+  }
+
+  checkIfUserIsFollowed(): boolean {
+    let isFollowed = false;
+    const user = this.authServ.getUser();
+    user.following.forEach( (follower) => {
+      if (follower.followId === this.user.id) {
+        isFollowed = true;
+      }
+    });
+    return isFollowed;
+  }
 }
