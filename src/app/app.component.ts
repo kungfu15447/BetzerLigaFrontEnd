@@ -13,7 +13,7 @@ export class AppComponent {
   IsUserLoggedIn() : boolean
   {
 
-    if(this.authService.getUsername() === null)
+    if(this.authService.getUser() === null)
     {
       return false;
     }

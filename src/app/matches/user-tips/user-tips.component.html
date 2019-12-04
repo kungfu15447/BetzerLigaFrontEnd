@@ -1,0 +1,22 @@
+<mat-list *ngFor="let match of round.matches">
+  <mat-list-item>{{match.homeTeam}} vs. {{match.guestTeam}}</mat-list-item>
+  <form [formGroup]="matchForm" (ngSubmit)="save()">
+    <mat-form-field>
+      <input matInput placeholder="Home score" formControlName="homeTip">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Guest Score" formControlName="guestTip">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Rating" formControlName="rating">
+    </mat-form-field>
+    <div fxLayoutAlign="end center">
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+  </form>
+</mat-list>
+
+
+

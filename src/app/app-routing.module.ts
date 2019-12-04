@@ -14,6 +14,7 @@ import {RoundUpdateComponent} from './rounds/round-update/round-update.component
 import {UserRoundsListComponent} from './rounds/user-rounds-list/user-rounds-list.component';
 import {HomeComponent} from './home/home.component';
 import {RulesComponent} from './rules/rules.component';
+import {UserTipsComponent} from './matches/user-tips/user-tips.component';
 
 
 
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'user-rounds-list', component: UserRoundsListComponent},
   {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
   {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'user-tips', component: UserTipsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'rules', component: RulesComponent}
 ];

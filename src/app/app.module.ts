@@ -29,6 +29,7 @@ import { RoundUpdateComponent } from './rounds/round-update/round-update.compone
 import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-list.component';
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
+import { UserTipsComponent } from './matches/user-tips/user-tips.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { RulesComponent } from './rules/rules.component';
     RoundUpdateComponent,
     UserRoundsListComponent,
     HomeComponent,
-    RulesComponent
+    RulesComponent,
+    UserTipsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { RulesComponent } from './rules/rules.component';
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatInputModule
   ],
   providers: [
     AuthGuard,
