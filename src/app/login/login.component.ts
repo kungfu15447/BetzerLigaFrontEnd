@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    debugger;
     this.authenticationService.login(this.username.value, this.password.value)
       .subscribe(
         success => {
