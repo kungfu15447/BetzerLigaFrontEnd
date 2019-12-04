@@ -54,7 +54,6 @@ export class UserDetailsComponent implements OnInit {
     };
     const index: number = user.following.indexOf(follower);
     user.following.splice(index, 1);
-    debugger;
     this.userService.updateUser(user)
       .subscribe();
   }
@@ -66,7 +65,7 @@ export class UserDetailsComponent implements OnInit {
     }
   }
 
-  checkIfUSerIsFollowed(): boolean {
+  checkIfUserIsFollowed(): boolean {
     let isFollowed = false;
     const user = this.authServ.getUser();
     user.following.forEach( (follower) => {
