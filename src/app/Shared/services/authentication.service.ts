@@ -7,18 +7,17 @@ import {User} from '../User.model';
 
 @Injectable()
 export class AuthenticationService {
-
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(environment.baseURL + 'Token', { username, password })
+    return this.http.post<any>(environment.apiUrl + 'Token', { username, password })
       .pipe(map(response => {
         const token = response.token
         const user = response.user;
         // login successful if there's a jwt token in the response
         if (token) {
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ User: user, token }));
+          localStorage.setItem('currentUser', JSON.stringify({ user, token }));
           // return true to indicate successful login
           return true;
         } else {

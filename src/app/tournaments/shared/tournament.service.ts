@@ -7,8 +7,7 @@ import {Tournament} from '../../Shared/Tournament.model';
   providedIn: 'root'
 })
 export class TournamentService {
-
-  private tourURL = 'http://localhost:59012/api/tournaments';
+  private tourURL = 'https://localhost:65007/api/tournaments';
   constructor(private http: HttpClient) { }
 
   getTour(id: number): Observable<Tournament> {
@@ -16,7 +15,7 @@ export class TournamentService {
     return this.http.get<Tournament>(url);
   }
 
-  getAllTour(): Observable<Tournament[]> {
-    return this.http.get<Tournament[]>(this.tourURL);
+  getAllTour(query: string): Observable<Tournament[]> {
+    return this.http.get<Tournament[]>(this.tourURL + '?tournament=' + query);
   }
 }
