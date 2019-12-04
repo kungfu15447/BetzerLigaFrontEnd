@@ -33,29 +33,47 @@ export class UserDetailsComponent implements OnInit {
 
   addFavorite() {
     const user = this.authServ.getUser();
-    for (const userFollowed of user.following) {
-      if (userFollowed.followId !== this.id) {
-        const follower: Following = {
-          authorizedUserId: user.id,
-          authorizedUser: null,
-          followId: this.id,
-          follow: null
-        };
-        user.following.push(follower);
-        debugger;
-        this.userService.updateUser(user)
-          .subscribe(() => {
-            this.router.navigateByUrl('/users');
-          });
-      }
-    }
+    const follower: Following = {
+      authorizedUserId: user.id,
+      authorizedUser: null,
+      followId: this.id,
+      follow: null
+    };
+    user.following.push(follower);
+    this.userService.updateUser(user)
+      .subscribe();
   }
 
+  removeFavorite() {
+    const user = this.authServ.getUser();
+    const follower: Following = {
+      authorizedUserId: user.id,
+      authorizedUser: null,
+      followId: this.id,
+      follow: null
+    };
+    const index: number = user.following.indexOf(follower);
+    user.following.splice(index, 1);
+    debugger;
+    this.userService.updateUser(user)
+      .subscribe();
+  }
   SafetyCheck(fn: any) {
     try {
       return fn();
     } catch (e) {
       return undefined;
     }
+  }
+
+  checkIfUSerIsFollowed(): boolean {
+    let isFollowed = false;
+    const user = this.authServ.getUser();
+    user.following.forEach( (follower) => {
+      if (follower.followId === this.user.id) {
+        isFollowed = true;
+      }
+    });
+    return isFollowed;
   }
 }

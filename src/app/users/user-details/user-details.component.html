@@ -9,9 +9,13 @@
     <h2>{{user.firstname}} {{user.lastname}}</h2>
     <p>Email: {{user.email}}</p>
     <p>Id: {{user.id}}</p>
-    <p>Following: {{user.following}}</p>
-    <button class="btn btn-primary" (click)="addFavorite()">Add favorite</button>
-        <span fxFlex></span>
+      <div *ngIf="!checkIfUSerIsFollowed()">
+        <button class="btn btn-primary" (click)="addFavorite()">Add favorite</button>
+      </div>
+    <div *ngIf="checkIfUSerIsFollowed()">
+      <button class="btn btn-danger" (click)="removeFavorite()">Remove from favorite</button>
+    </div>
+    <span fxFlex></span>
   </div>
   <h4 *ngIf="!user">Loading.....</h4>
 </div>
