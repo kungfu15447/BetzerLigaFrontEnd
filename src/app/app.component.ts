@@ -10,9 +10,7 @@ export class AppComponent {
   title = 'BetzerLigaFrontEnd';
   constructor(private authService: AuthenticationService) {}
 
-  IsUserLoggedIn(): boolean
-  {
-
+  IsUserLoggedIn(): boolean {
     if (this.authService.getUser() === null) {
       return false;
     } else {
@@ -20,7 +18,7 @@ export class AppComponent {
     }
   }
 
-  logout(): void {
+    logout(): void {
     // remove user from local storage to log user out
     this.authService.logout();
     window.location.reload();

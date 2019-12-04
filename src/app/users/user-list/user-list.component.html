@@ -2,9 +2,11 @@
 <button class="btn btn-primary" routerLink="/user-add">Add user</button>
 <ul class="list-group" *ngIf="users">
   <li class="list-group-item" *ngFor="let user of users">
-    <a href="#" class="list-group-item waves-light" routerLink="/users/{{user.id}}">
-      {{user.firstname}} {{user.lastname}}
-    </a>
+    <div *ngIf="user.id !== loggedInUser.id">
+      <a href="#" class="list-group-item waves-light" routerLink="/users/{{user.id}}">
+        {{user.firstname}} {{user.lastname}}
+      </a>
+    </div>
   </li>
 </ul>
 <h4 *ngIf="!users">Loading.....</h4>
