@@ -39,8 +39,9 @@ export class UserTipsComponent implements OnInit {
     this.roundService.getCurrentRound()
       .subscribe(roundsFromRest => {
           this.round = roundsFromRest.length > 0 ? roundsFromRest[0] : undefined;
+          this.checkUserForRound();
       });
-    this.checkUserForRound();
+
   }
   checkUserForRound() {
     /*for (const match of this.round.matches) {

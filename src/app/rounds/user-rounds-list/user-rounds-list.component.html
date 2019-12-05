@@ -1,6 +1,6 @@
 <div *ngIf="round">
   <h2>Round {{round.roundNumber}}</h2>
-<mat-list *ngFor="let userRound of round.roundPoints">
-  <mat-list-item>{{userRound.user.firstname}} {{userRound.user.lastname}} || {{userRound.userPoints}}</mat-list-item>
-</mat-list>
+<li *ngFor="let userRound of round.roundPoints">
+  <a>{{userRound.user.firstname}} {{userRound.user.lastname}} || {{userRound.userPoints}}</a>
+</li>
 </div>
