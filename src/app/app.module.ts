@@ -21,6 +21,9 @@ import { RoundUpdateComponent } from './rounds/round-update/round-update.compone
 import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-list.component';
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
+import { MatchesAddComponent } from './matches/matches-add/matches-add.component';
+import { MatchesUpdateComponent } from './matches/matches-update/matches-update.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { RulesComponent } from './rules/rules.component';
     RoundUpdateComponent,
     UserRoundsListComponent,
     HomeComponent,
-    RulesComponent
+    RulesComponent,
+    MatchesAddComponent,
+    MatchesUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { RulesComponent } from './rules/rules.component';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     AuthGuard,
