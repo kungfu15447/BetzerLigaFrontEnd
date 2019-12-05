@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatchService} from '../shared/matchService';
 import {Router} from '@angular/router';
-import {Round} from '../../Shared/Round.model';
-import {RoundService} from '../../rounds/shared/round.service';
+import {Match} from '../../Shared/Match.model';
 
 @Component({
   selector: 'app-matches-add',
@@ -11,22 +10,20 @@ import {RoundService} from '../../rounds/shared/round.service';
   styleUrls: ['./matches-add.component.scss']
 })
 export class MatchesAddComponent implements OnInit {
-matchForm = new FormGroup({
+  matchForm = new FormGroup({
   HomeTeam: new FormControl(''),
-  HomeScore: new FormControl(''),
   GuestTeam: new FormControl(''),
-  GuestScore: new FormControl(''),
   StartDate: new FormControl(''),
-  Round: new FormControl('')
+  Round: new FormControl(''),
 });
 
-  constructor(private matchService: MatchService, private router: Router, private roundService: RoundService) { }
-
-
-  ngOnInit() {
+  constructor(private matchService: MatchService, private router: Router, match: Match) {
   }
 
-  add() {
+  match = this.matchService.getMatches();
+  ngOnInit() {}
+
+    add() {
     const match = this.matchForm.value;
     this.matchService.addMatch(match)
       .subscribe(() => {
