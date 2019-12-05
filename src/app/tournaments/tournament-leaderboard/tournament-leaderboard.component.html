@@ -1,4 +1,4 @@
-<div *ngIf="tournament">
+<div *ngIf="tournament  && !loading">
   <h2></h2>
   <h3>Igangværende turnering: {{tournament.name}}<</h3>
   <h3>Leaderboard</h3>
@@ -18,11 +18,14 @@
     </tr>
     </tbody>
   </table>
+  <button (click)="clickedTheButton()">click me</button>
 </div>
-<div *ngIf="!tournament">
+<div *ngIf="!tournament && !loading">
   <h2>Ingen turnering er lige pt igang!</h2>
   <h3>Check endelig senere!</h3>
 </div>
-
+<div *ngIf="loading">
+  <h1>Loading........</h1>
+</div>
 
 
