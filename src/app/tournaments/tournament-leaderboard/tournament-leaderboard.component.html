@@ -11,11 +11,23 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of tournament.participants">
-      <td>1</td>
-      <td>{{user.user.firstname}} {{user.user.lastname}}</td>
-      <td>{{user.totalUserPoints}}</td>
-    </tr>
+    <div>
+      <button class="btn btn-primary" (click)="changeShowFavorites()">Show all participants</button>
+    <div *ngIf="!showFavorites">
+      <tr *ngFor="let user of tournament.participants">
+        <td>1</td>
+        <td>{{user.user.firstname}} {{user.user.lastname}}</td>
+        <td>{{user.totalUserPoints}}</td>
+      </tr>
+    </div>
+    <div *ngIf="showFavorites">
+      <tr *ngFor="let user of favTournaments">
+        <td>1</td>
+        <td>{{user.user.firstname}} {{user.user.lastname}}</td>
+        <td>{{user.totalUserPoints}}</td>
+      </tr>
+    </div>
+    </div>
     </tbody>
   </table>
 </div>

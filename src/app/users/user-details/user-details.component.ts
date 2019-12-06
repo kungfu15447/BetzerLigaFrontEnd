@@ -37,7 +37,7 @@ export class UserDetailsComponent implements OnInit {
       authorizedUserId: user.id,
       authorizedUser: null,
       followId: this.id,
-      follow: null
+      follow: this.user
     };
     user.following.push(follower);
     this.authServ.setUser(user);
@@ -52,7 +52,7 @@ export class UserDetailsComponent implements OnInit {
       authorizedUserId: user.id,
       authorizedUser: null,
       followId: this.id,
-      follow: null
+      follow: this.user
     };
 
     user.following.forEach( (follow)  => {
