@@ -24,6 +24,8 @@ import { RulesComponent } from './rules/rules.component';
 import { MatchesAddComponent } from './matches/matches-add/matches-add.component';
 import { MatchesUpdateComponent } from './matches/matches-update/matches-update.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TournamentAddComponent } from './tournaments/tournament-add/tournament-add.component';
+import { TournamentListComponent } from './tournaments/tournament-list/tournament-list.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     RulesComponent,
     MatchesAddComponent,
     MatchesUpdateComponent,
+    TournamentAddComponent,
+    TournamentListComponent
   ],
   imports: [
     BrowserModule,

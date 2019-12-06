@@ -1,8 +1,30 @@
-<div *ngIf="tournament">
-  <h2>Tournament: {{tournament.name}}</h2>
-  <ul class="rounds">
-    <div *ngFor="let round of tournament.rounds">
-      <h4>Round {{round.roundNumber}}</h4>
-    </div>
-  </ul>
+<div *ngIf="tournament && !loading">
+  <h2>Turnering: {{tournament.name}}</h2>
+  <h4>Mængden af runder: {{tournament.numberOfRounds}}</h4>
+  <h4>Start dato: {{tournament.startDate | date: 'dd-MM-yyyy'}}</h4>
+  <h4>Slut dato: {{tournament.endDate | date: 'dd-MM-yyyy'}}</h4>
+  <h4>Tilmeldte: {{tournament.participants.length}}</h4>
+
+  <div class="col-sm-6">
+    <h3>Turnerings leaderbord:</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th style="width: 3%">#</th>
+        <th style="width: 20%">Brugere</th>
+        <th style="width: 10%">Points</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of tournament.participants">
+        <td>1</td>
+        <td>{{user.user.firstname}} {{user.user.lastname}}</td>
+        <td>{{user.totalUserPoints}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="!tournament && loading">
+  <h2>Loading</h2>
 </div>
