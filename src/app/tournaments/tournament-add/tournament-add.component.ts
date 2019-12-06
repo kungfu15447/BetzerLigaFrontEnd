@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TournamentService} from '../shared/tournament.service';
 import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-tournament-add',
@@ -18,7 +19,8 @@ export class TournamentAddComponent implements OnInit {
     endDate: [''],
   });
   constructor(private tourService: TournamentService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,9 +28,8 @@ export class TournamentAddComponent implements OnInit {
   addTournament(): void {
     const tournament = this.tournamentForm.value;
     tournament.isDone = false;
-    debugger;
     this.tourService.addTour(tournament)
-      .subscribe();
+      .subscribe(() => this.router.navigateByUrl('/tournamentList'));
   }
 
 }
