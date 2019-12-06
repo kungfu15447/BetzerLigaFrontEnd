@@ -1,41 +1,32 @@
 <form [formGroup]="matchForm" (ngSubmit)="add()">
 
-  <label>
-    HomeTeam:
-    <input type="text" formControlName="HomeTeam">
+  <table class="col-md-offset-1">
+    <thead>
+    <th>HomeTeam</th>
+    <th>GuestTeam</th>
+    <th>Kick-Off</th>
+    </thead>
+    <div *ngFor="let m of match">
+    <tbody >
+    <td>
+      <label>
+      <input type="text" formControlName="HomeTeam" required>
+    </label>
+    </td>
+  <td>
+    <label>
+    <input type="text" formControlName="GuestTeam" required>
   </label>
+  </td>
+    <td>
+      <label>
+      <input type="Date" formControlName="StartDate" required>
+    </label>
+    </td>
+    </tbody>
+    </div>
+  </table>
 
-  <label>
-    HomePoints:
-    <input type="text" formControlName="HomeScore">
-  </label>
-
-  <label>
-    GuestTeam:
-    <input type="text" formControlName="GuestTeam">
-  </label>
-
-  <label>
-    GuestPoints:
-    <input type="text" formControlName="GuestScore">
-  </label>
-
-  <label>
-    StartDate:
-    <input type="Date" formControlName="StartDate">
-  </label>
-
-  <div class="btn-group" dropdown >
-    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-            aria-controls="dropdown-basic">
-      Button dropdown <span class="caret"></span>
-    </button>
-    <ul  id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-        role="menu" aria-labelledby="button-basic" >
-      <li role="menuitem"><a class="dropdown-item" href="#"></a></li>
-    </ul>
-  </div>
-
-  <button type="submit">Add Match</button>
+  <button class=" btn-primary s" type="submit">Add Matches to Round</button>
 
 </form>
