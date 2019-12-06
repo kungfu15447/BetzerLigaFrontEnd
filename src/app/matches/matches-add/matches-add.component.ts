@@ -22,8 +22,9 @@ matchForm = new FormGroup({
 
   constructor(private matchService: MatchService, private router: Router, private roundService: RoundService) { }
 
-
+  rounds: Round[];
   ngOnInit() {
+    this.roundService.getRounds().subscribe(value => this.rounds = value);
   }
 
   add() {
@@ -32,4 +33,13 @@ matchForm = new FormGroup({
       .subscribe(() => {
         this.router.navigateByUrl('/matches');
       });
-}}
+}
+  count(): number {
+    let i = 0;
+    for (const item of this.rounds)
+    {
+      i++;
+    }
+    return i;
+  }
+}
