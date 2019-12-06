@@ -1,12 +1,11 @@
+<div *ngFor="let a of amount">
 <form [formGroup]="matchForm" (ngSubmit)="add()">
-
   <table class="col-md-offset-1">
     <thead>
     <th>HomeTeam</th>
     <th>GuestTeam</th>
     <th>Kick-Off</th>
     </thead>
-    <div *ngFor="let m of match">
     <tbody >
     <td>
       <label>
@@ -24,9 +23,7 @@
     </label>
     </td>
     </tbody>
-    </div>
   </table>
-
-  <button class=" btn-primary s" type="submit">Add Matches to Round</button>
-
 </form>
+</div>
+<button class=" btn-primary s" type="submit">Add Matches to Round</button>

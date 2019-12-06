@@ -15,14 +15,15 @@ export class MatchesAddComponent implements OnInit {
   HomeTeam: new FormControl(''),
   GuestTeam: new FormControl(''),
   StartDate: new FormControl(''),
+
 });
 
   constructor(private matchService: MatchService, private router: Router, private roundService: RoundService) { }
 
-  amount = [1, 1, 1, 1, 1, 1, 1, 1, 1 , 1 , 1 , 1];
-  rounds: Round[];
+  amount = [1, 2, 3, 4, 5, 6, 7, 8, 9 , 10 , 11 , 12];
+
   ngOnInit() {
-    this.roundService.getRounds().subscribe(value => this.rounds = value);
+
   }
 
 
