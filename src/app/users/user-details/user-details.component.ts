@@ -66,14 +66,12 @@ export class UserDetailsComponent implements OnInit {
     if (index !== -1) {
       user.following.splice(index, 1);
     }
-
     this.authServ.setUser(user);
-    debugger;
     this.userService.updateUser(user)
       .subscribe();
   }
 
-  checkIfUSerIsFollowed(): boolean {
+  checkIfUserIsFollowed(): boolean {
     let isFollowed = false;
     const user = this.authServ.getUser();
     user.following.forEach( (follower) => {

@@ -11,19 +11,22 @@ import {take} from 'rxjs/operators';
 })
 export class TournamentLeaderboardComponent implements OnInit {
   tournaments: Tournament[];
+  tournament: Tournament;
 
   constructor(private tourService: TournamentService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getTours();
+    this.getOnGoingTour();
   }
 
-  getTours(): void {
-    this.tourService.getAllTour()
+  getOnGoingTour(): void {
+    this.tourService.getAllTour('currentTournament')
       .pipe(
         take(1)
       )
-      .subscribe(tournaments => this.tournaments = tournaments);
+      .subscribe(tournaments => {
+        this.tournament = tournaments.length > 0 ? tournaments[0] : undefined;
+      });
   }
 }
