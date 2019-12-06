@@ -18,7 +18,7 @@ export class AuthenticationService {
         // login successful if there's a jwt token in the response
         if (token) {
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ User: user, token }));
+          localStorage.setItem('currentUser', JSON.stringify({ user, token }));
           // return true to indicate successful login
           this.userLoggedIn = user;
           return true;
@@ -37,6 +37,11 @@ export class AuthenticationService {
   getUser(): User {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     return currentUser && currentUser.user;
+  }
+  setUser(user: User): void {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const token = currentUser.token;
+    localStorage.setItem('currentUser', JSON.stringify({ user, token }));
   }
 
     logout(): void {
