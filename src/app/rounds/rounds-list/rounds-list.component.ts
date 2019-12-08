@@ -12,6 +12,7 @@ import {take} from 'rxjs/operators';
 export class RoundsListComponent implements OnInit {
 
   rounds: Round[];
+
   constructor(private roundService: RoundService) { }
 
   ngOnInit() {
@@ -19,8 +20,7 @@ export class RoundsListComponent implements OnInit {
   }
 
   refresh() {
-    this.roundService.getRounds().pipe(
-      take(1))
+    this.roundService.getRounds()
       .subscribe(listOfRounds => this.rounds = listOfRounds);
   }
 
