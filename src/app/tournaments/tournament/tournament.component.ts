@@ -10,6 +10,7 @@ import {TournamentService} from '../shared/tournament.service';
 })
 export class TournamentComponent implements OnInit {
   tournament: Tournament;
+  loading: boolean;
   constructor(private route: ActivatedRoute,
               private tourService: TournamentService
   ) { }
@@ -19,9 +20,11 @@ export class TournamentComponent implements OnInit {
   }
 
   getTour(): void {
+    this.loading = true;
     const id = +this.route.snapshot.paramMap.get('id');
     this.tourService.getTour(id)
       .subscribe(tournament => this.tournament = tournament);
+    this.loading = false;
   }
 
 }

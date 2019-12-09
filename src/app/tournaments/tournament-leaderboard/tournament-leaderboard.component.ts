@@ -13,10 +13,12 @@ import {User} from '../../Shared/User.model';
   styleUrls: ['./tournament-leaderboard.component.scss']
 })
 export class TournamentLeaderboardComponent implements OnInit {
+  tournaments: Tournament[] ;
   tournament: Tournament;
   favTournaments: UserTour[] = [];
   showFavorites: boolean;
   user: User;
+  loading: boolean;
 
   constructor(private tourService: TournamentService,
               private route: ActivatedRoute,
@@ -30,6 +32,7 @@ export class TournamentLeaderboardComponent implements OnInit {
   }
 
   getOnGoingTour(): void {
+    this.loading = true;
     this.tourService.getAllTour('currentTournament')
       .pipe(
         take(1)
@@ -55,6 +58,20 @@ export class TournamentLeaderboardComponent implements OnInit {
       this.showFavorites = true;
     } else {
       this.showFavorites = false;
+      console.log(this.tournament.name);
+      this.logTournement();
+      this.loading = false;
+      console.log(this.tournament.name);
     }
   }
+    logTournement()
+    {
+      console.log(this.tournament.name);
+    }
+
+    clickedTheButton() {
+      if (this.tournament) {
+        console.log(this.tournament.name);
+      }
+    }
 }
