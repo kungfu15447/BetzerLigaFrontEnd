@@ -40,7 +40,7 @@ export class RoundService {
     return this.http.get<Round[]>(this.apiUrl + '?tournament=tour');
   }
 
-  getCurrentRoundSearchedMatches(user: User): Observable<Round[]> {
-    return this.http.get<Round[]>(this.apiUrl + '?tournament=matches&userId=' + user.id);
+  getCurrentRoundSearchedMatches(userId: number): Observable<Round[]> {
+    return this.http.get<Round[]>(this.apiUrl + '?tournament=matches&userId=' + userId);
   }
 }

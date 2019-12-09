@@ -1,7 +1,7 @@
-<div *ngIf="round && round.matches && tipsForUser">
+<!--<div *ngIf="round && round.matches && tipsForUser">
   <li *ngFor="let match of round.matches">
-    <a>{{match.homeTeam}} vs. {{match.guestTeam}}</a>
-    <ng-form [formGroup]="matchForm" (ngSubmit)="save()">
+    <h1>{{match.homeTeam}} vs. {{match.guestTeam}}</h1>
+    <ng-form [formGroup]="fixedMatchForm" (ngSubmit)="save()">
       <label> {{match.homeTeam}}
         <input placeholder="Home score" formControlName="homeTip">
       </label>
@@ -18,20 +18,22 @@
       </div>
     </ng-form>
   </li>
-</div>
+</div>-->
 
 <form [formGroup]="matchForm">
-  <div *ngIf="matchForm.controls.published.value">
 
     <h2>Credentials</h2>
-    <div formArrayName="credentials" *ngFor="let creds of matchForm.controls.credentials?.value; let i = index">
+    <div formArrayName="credentials" *ngFor="let creds of matchForm.controls.credentials?.value, let i = index" (ngSubmit)="save()">
       <ng-container [formGroupName]="i">
+        <label> homeTip</label>
         <input placeholder="Home Tip" formControlName="homeTip">
+        <label>GuestTip</label>
         <input placeholder="Guest Tip" formControlName="guestTip">
+        <label>Rating</label>
+        <input placeholder="Rating" formControlName="rating">
       </ng-container>
     </div>
-
-  </div>
+    <button color="primary" type="submit">Save</button>
 </form>
 
 

@@ -32,8 +32,15 @@ export class UserTipsComponent implements OnInit {
               private matchService: MatchService,
               private formBuilder: FormBuilder) {
     this.matchForm = this.formBuilder.group({
-      published: true,
-      credentials: this.formBuilder.array([]),
+      credentials: this.formBuilder.array([
+        this.tipsForUser.forEach(t => this.formBuilder.group({
+          homeTip: '',
+          guestTip: '',
+          rating: '',
+          userId: '',
+          matchId: '',
+        }))
+        ])
     });
   }
 
@@ -41,21 +48,15 @@ export class UserTipsComponent implements OnInit {
     this.currentUser = this.authService.getUser();
     this.getRound();
     const creds = this.matchForm.controls.credentials as FormArray;
-    creds.push(this.formBuilder.group({
-      homeTip: [''],
-      guestTip: [''],
-      rating: [''],
-      userId: [''],
-      matchId: [''],
-    }));
+
   }
 
   getRound() {
-    this.roundService.getCurrentRoundSearchedMatches(this.currentUser)
+    this.roundService.getCurrentRoundSearchedMatches(this.currentUser.id)
       .subscribe(roundFromRest => {
         this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
         this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
-        for (const match of this.matches) {
+        for (const match of roundFromRest[0].matches) {
           for (const tips of match.tips) {
             this.tipsForUser.push(tips);
           }
@@ -63,16 +64,11 @@ export class UserTipsComponent implements OnInit {
       });
   }
 
-  makeFormgroups() {
-
-  }
-
   save() {
     this.tipsForUser = this.matchForm.value;
-    this.tipsForUser =
-      this.currentUser.tips = [];
-    const userToUpdate = this.currentUser;
+    this.tipsForUser = this.currentUser.tips = [];
     debugger;
+    const userToUpdate = this.currentUser;
     this.userService.updateUser(userToUpdate)
       .subscribe(() => {
         this.router.navigateByUrl('/rounds');
