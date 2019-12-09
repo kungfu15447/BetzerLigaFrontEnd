@@ -36,6 +36,11 @@ export class AuthenticationService {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     return currentUser && currentUser.user;
   }
+  setUser(user: User): void {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const token = currentUser.token;
+    localStorage.setItem('currentUser', JSON.stringify({ user, token }));
+  }
 
     logout(): void {
     // remove user from local storage to log user out

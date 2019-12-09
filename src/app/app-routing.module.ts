@@ -15,6 +15,8 @@ import {HomeComponent} from './home/home.component';
 import {RulesComponent} from './rules/rules.component';
 import {UserRoundsListComponent} from './rounds/user-rounds-list/user-rounds-list.component';
 import {MatchesAddComponent} from './matches/matches-add/matches-add.component';
+import {TournamentAddComponent} from './tournaments/tournament-add/tournament-add.component';
+import {TournamentListComponent} from './tournaments/tournament-list/tournament-list.component';
 
 
 
@@ -37,7 +39,9 @@ const routes: Routes = [
   {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'rules', component: RulesComponent, canActivate: [AuthGuard]},
-  {path: 'add-match', component: MatchesAddComponent, canActivate: [AuthGuard]}
+  {path: 'add-match', component: MatchesAddComponent, canActivate: [AuthGuard]},
+  {path: 'addTournament', component: TournamentAddComponent},
+  {path: 'tournamentList', component: TournamentListComponent}
 ];
 
 @NgModule({
