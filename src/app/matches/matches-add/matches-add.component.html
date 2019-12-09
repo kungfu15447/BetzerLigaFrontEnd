@@ -1,29 +1,15 @@
-<div *ngFor="let a of amount">
-<form [formGroup]="matchForm" (ngSubmit)="add()">
-  <table class="col-md-offset-1">
-    <thead>
-    <th>HomeTeam</th>
-    <th>GuestTeam</th>
-    <th>Kick-Off</th>
-    </thead>
-    <tbody >
-    <td>
-      <label>
-      <input type="text" formControlName="HomeTeam" required>
-    </label>
-    </td>
-  <td>
-    <label>
-    <input type="text" formControlName="GuestTeam" required>
-  </label>
-  </td>
-    <td>
-      <label>
-      <input type="Date" formControlName="StartDate" required>
-    </label>
-    </td>
-    </tbody>
-  </table>
+<link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
+<form [formGroup]="lookupForm">
+  <div *ngFor="let a of amount">
+    <input type="text" formControlName="GuestTeam" placeholder="GuestTeam">
+    <input type="text" formControlName="HomeTeam" placeholder="Hometeam">
+    <input type="datetime" formControlName="StartDate" placeholder="StartDate" bsDatepicker>
+
+    <button type="submit" (click)="addToList()">add to list</button>
+  </div>
+  <button type="submit" (click)="addToRound()">add to round</button>
+  <h3>Ting i liste: {{listOfMatches.length}}</h3>
+  <div *ngFor="let d of listOfMatches">
+    <h3>{{d.HomeTeam}} {{d.GuestTeam}} {{d.StartDate}}</h3>
+  </div>
 </form>
-</div>
-<button class=" btn-primary s" type="submit">Add Matches to Round</button>
