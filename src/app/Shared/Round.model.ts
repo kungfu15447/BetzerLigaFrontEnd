@@ -8,6 +8,7 @@ export interface Round {
   tournament?: Tournament;
   tournamentId?: number;
   totalGoals: number;
+  tippingDeadLine: Date;
   matches?: Match[];
   roundPoints?: UserRound[];
 }
