@@ -49,16 +49,18 @@ export class UserTipsComponent implements OnInit {
         this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
         for (const match of roundFromRest[0].matches) {
           for (const tips of match.tips) {
+            console.log(tips);
             this.tipsForUser.push(tips);
-            this.createFormGroups();
           }
         }
+        this.createFormGroups();
       });
   }
 
   createFormGroups(): FormArray {
     const creds = this.matchForm.controls.credentials as FormArray;
     for (let i = 0; i < this.tipsForUser.length; i++) {
+      console.log(i);
       creds.push(this.formBuilder.group({
         homeTip: [''],
         guestTip: [''],
@@ -73,7 +75,6 @@ export class UserTipsComponent implements OnInit {
   save() {
     this.tipsForUser = this.matchForm.value;
     this.tipsForUser = this.currentUser.tips = [];
-    debugger;
     const userToUpdate = this.currentUser;
     this.userService.updateUser(userToUpdate)
       .subscribe(() => {
