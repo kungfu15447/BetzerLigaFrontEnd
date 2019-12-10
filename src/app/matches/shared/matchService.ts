@@ -21,13 +21,18 @@ export class MatchService {
     this.getMatches();
   }
 
-  addMatch(match: Match): Observable<Match> {
-  return this.http.post<Match>(this.URL + 'Matches/', match);
+  addMatch(match: Match[]): Observable<Match> {
+    httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
+    return this.http.post<Match>(this.URL + 'matches', match);
   }
 
   getMatches(): Observable<Match[]> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
     return this.http.get<Match[]>(this.URL + 'matches', httpOptions);
+  }
+  getMatch(id: number): Observable<Match[]> {
+    httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
+    return this.http.get<Match[]>(this.URL + 'matches/' + id, httpOptions);
   }
 }
 

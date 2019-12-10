@@ -26,6 +26,7 @@ import { MatchesUpdateComponent } from './matches/matches-update/matches-update.
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TournamentAddComponent } from './tournaments/tournament-add/tournament-add.component';
 import { TournamentListComponent } from './tournaments/tournament-list/tournament-list.component';
+import {BsDatepickerModule} from "ngx-bootstrap";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { TournamentListComponent } from './tournaments/tournament-list/tournamen
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     AuthGuard,

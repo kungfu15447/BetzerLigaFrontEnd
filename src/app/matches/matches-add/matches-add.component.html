@@ -1,41 +1,49 @@
-<form [formGroup]="matchForm" (ngSubmit)="add()">
-
-  <label>
-    HomeTeam:
-    <input type="text" formControlName="HomeTeam">
-  </label>
-
-  <label>
-    HomePoints:
-    <input type="text" formControlName="HomeScore">
-  </label>
-
-  <label>
-    GuestTeam:
-    <input type="text" formControlName="GuestTeam">
-  </label>
-
-  <label>
-    GuestPoints:
-    <input type="text" formControlName="GuestScore">
-  </label>
-
-  <label>
-    StartDate:
-    <input type="Date" formControlName="StartDate">
-  </label>
-
-  <div class="btn-group" dropdown >
-    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-            aria-controls="dropdown-basic">
-      Button dropdown <span class="caret"></span>
-    </button>
-    <ul  id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-        role="menu" aria-labelledby="button-basic" >
-      <li role="menuitem"><a class="dropdown-item" href="#"></a></li>
-    </ul>
+<link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
+<div style="text-align: center">
+<div style="display: inline-block">
+<form [formGroup]="lookupForm">
+  <div style="padding: 25px">
+    <input type="text" formControlName="GuestTeam" placeholder="GuestTeam" required>
+    <input type="text" formControlName="HomeTeam" placeholder="Hometeam" required>
+    <input type="datetime-local" formControlName="StartDate" placeholder="StartDate" required>
+    <button type="submit" (click)="addToList()">add to list</button>
   </div>
-
-  <button type="submit">Add Match</button>
-
 </form>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div style="text-align: center">
+    <div style="display: inline-block">
+  <div class="row" style="padding: 25px">
+    <div>
+      <div class="card">
+        <div class="card-body">
+          <table class="table" style="width: 600px">
+            <thead>
+            <tr>
+              <th scope="col">GuestTeam</th>
+              <th scope="col">HomeTeam</th>
+              <th scope="col">StartDate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let m of listOfMatches">
+              <td>{{m.GuestTeam}}</td>
+              <td>{{m.HomeTeam}}</td>
+              <td>{{m.StartDate}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div *ngIf="listOfMatches.length == 12">
+    <button type="submit" (click)="addToRound()">add to round</button>
+  </div>
+</div>

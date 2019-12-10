@@ -1,15 +1,5 @@
 <div *ngIf="tournament && !loading">
-  <div *ngIf="authService.getUser().isAdmin" class="input-group mb-3">
-    <div class="input-group-prepend">
-      <button class="btn btn-primary" style="float: right" (click)="addRound()">Add new round</button>
-    </div>
-    <form [formGroup]="roundForm" (ngSubmit)="addRound()">
-      <input type="date" class="form-control" placeholder="Tipping deadline" formControlName="tippingDeadLine" aria-label="" aria-describedby="basic-addon1">
-      <div *ngIf="tippingDeadline.invalid && submitted" class="alert-danger">
-        <div *ngIf="tippingDeadline.errors.required">Tipping deadline is required</div>
-      </div>
-    </form>
-  </div>
+  <button class="btn btn-primary" style="float: right" routerLink="/add-MatchRound/{{tournament.id}}">add</button>
   <h2>Turnering: {{tournament.name}}</h2>
   <h4>Mængden af runder: {{tournament.numberOfRounds}}</h4>
   <h4>Start dato: {{tournament.startDate | date: 'dd-MM-yyyy'}}</h4>
