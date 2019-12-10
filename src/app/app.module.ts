@@ -22,6 +22,11 @@ import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-l
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { UserTipsComponent } from './matches/user-tips/user-tips.component';
+import { MatchesUpdateComponent } from './matches/matches-update/matches-update.component';
+import { MatchesAddComponent } from './matches/matches-add/matches-add.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TournamentAddComponent } from './tournaments/tournament-add/tournament-add.component';
+import { TournamentListComponent } from './tournaments/tournament-list/tournament-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,11 @@ import { UserTipsComponent } from './matches/user-tips/user-tips.component';
     UserRoundsListComponent,
     HomeComponent,
     RulesComponent,
-    UserTipsComponent
+    UserTipsComponent,
+    MatchesAddComponent,
+    MatchesUpdateComponent,
+    TournamentAddComponent,
+    TournamentListComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +58,8 @@ import { UserTipsComponent } from './matches/user-tips/user-tips.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     AuthGuard,

@@ -1,0 +1,57 @@
+<h3>Kørende turneringer</h3>
+<div *ngIf="onGoingTournaments.length != 0 && !loading">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Turnerings navn</th>
+      <th scope="col">Antal runder</th>
+      <th scope="col">Start dato</th>
+      <th scope="col">Slut dato</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tournament of onGoingTournaments">
+      <td>{{onGoingTournaments.indexOf(tournament)+1}}</td>
+      <td><a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a></td>
+      <td>{{tournament.numberOfRounds}}</td>
+      <td>{{ tournament.startDate | date:'dd-MM-yyyy'}}</td>
+      <td>{{tournament.endDate | date: 'dd-MM-yyyy'}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="onGoingTournaments.length == 0 && !loading">
+  <h2>Ingen turneringer er lige pt igang!</h2>
+  <h3>Check endelig senere!</h3>
+</div>
+<h3>Nye turneringer</h3>
+<div *ngIf="newTournaments.length != 0 && !loading">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Turnerings navn</th>
+      <th scope="col">Antal runder</th>
+      <th scope="col">Start dato</th>
+      <th scope="col">Slut dato</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tournament of newTournaments">
+      <td>{{newTournaments.indexOf(tournament)+1}}</td>
+      <td><a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a></td>
+      <td>{{tournament.numberOfRounds}}</td>
+      <td>{{ tournament.startDate | date:'dd-MM-yyyy'}}</td>
+      <td>{{tournament.endDate | date: 'dd-MM-yyyy'}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="newTournaments.length == 0 && !loading">
+  <h4>Ingen nye turneringer er lige pt blevet oprettet!</h4>
+  <h5>Check endelig senere for nye turneringer!</h5>
+</div>
+<div *ngIf="loading">
+  <h1>Loading........</h1>
+</div>
