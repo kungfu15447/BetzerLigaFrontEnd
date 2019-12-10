@@ -8,6 +8,7 @@ export interface Match {
   GuestTeam: string;
   GuestScore: number;
   StartDate: Date;
-  Round: Round[];
+  Round: Round;
+  RoundId: number;
   Tips: UserMatch[];
 }
