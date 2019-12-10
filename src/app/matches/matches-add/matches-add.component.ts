@@ -17,13 +17,12 @@ export class MatchesAddComponent implements OnInit {
   StartDate: new FormControl(''),
   HomeScore: new FormControl(''),
   GuestScore: new FormControl(''),
-
+  Round: new FormControl(''),
 });
+
   matchValues = ['HomeTeam', 'GuestTeam', 'StartDate'];
   listOfMatches: Match[] = [];
-  amount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-  constructor(private matchService: MatchService, private router: Router, private roundService: RoundService, private formBuilder: FormBuilder) {
+  constructor(private matchService: MatchService, private router: Router, private formBuilder: FormBuilder) {
     this.createForm();
   }
 
@@ -35,10 +34,12 @@ export class MatchesAddComponent implements OnInit {
       m.HomeScore = 0;
       m.GuestScore = 0;
       this.listOfMatches.push(m);
+      this.lookupForm.reset();
 
     }
     addToRound() {
 
+    this.matchService.addMatch(this.listOfMatches);
     }
 
   createForm() {

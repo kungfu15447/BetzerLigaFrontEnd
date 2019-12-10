@@ -1,4 +1,5 @@
 <div *ngIf="tournament && !loading">
+  <button class="btn btn-primary" style="float: right" routerLink="/add-MatchRound/{{tournament.id}}">add</button>
   <h2>Turnering: {{tournament.name}}</h2>
   <h4>Mængden af runder: {{tournament.numberOfRounds}}</h4>
   <h4>Start dato: {{tournament.startDate | date: 'dd-MM-yyyy'}}</h4>

@@ -1,15 +1,49 @@
 <link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
+<div style="text-align: center">
+<div style="display: inline-block">
 <form [formGroup]="lookupForm">
-  <div *ngFor="let a of amount">
-    <input type="text" formControlName="GuestTeam" placeholder="GuestTeam">
-    <input type="text" formControlName="HomeTeam" placeholder="Hometeam">
-    <input type="datetime" formControlName="StartDate" placeholder="StartDate" bsDatepicker>
-
+  <div style="padding: 25px">
+    <input type="text" formControlName="GuestTeam" placeholder="GuestTeam" required>
+    <input type="text" formControlName="HomeTeam" placeholder="Hometeam" required>
+    <input type="datetime-local" formControlName="StartDate" placeholder="StartDate" required>
     <button type="submit" (click)="addToList()">add to list</button>
   </div>
-  <button type="submit" (click)="addToRound()">add to round</button>
-  <h3>Ting i liste: {{listOfMatches.length}}</h3>
-  <div *ngFor="let d of listOfMatches">
-    <h3>{{d.HomeTeam}} {{d.GuestTeam}} {{d.StartDate}}</h3>
-  </div>
 </form>
+</div>
+</div>
+
+
+
+<div class="container">
+  <div style="text-align: center">
+    <div style="display: inline-block">
+  <div class="row" style="padding: 25px">
+    <div>
+      <div class="card">
+        <div class="card-body">
+          <table class="table" style="width: 600px">
+            <thead>
+            <tr>
+              <th scope="col">GuestTeam</th>
+              <th scope="col">HomeTeam</th>
+              <th scope="col">StartDate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let m of listOfMatches">
+              <td>{{m.GuestTeam}}</td>
+              <td>{{m.HomeTeam}}</td>
+              <td>{{m.StartDate}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <div *ngIf="listOfMatches.length == 12">
+    <button type="submit" (click)="addToRound()">add to round</button>
+  </div>
+</div>
