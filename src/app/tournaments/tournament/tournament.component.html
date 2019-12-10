@@ -1,4 +1,15 @@
 <div *ngIf="tournament && !loading">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <button class="btn btn-primary" style="float: right" (click)="addRound()">Add new round</button>
+    </div>
+    <form [formGroup]="roundForm" (ngSubmit)="addRound()">
+      <input type="number" class="form-control" placeholder="Round number" formControlName="roundNumber" aria-label="" aria-describedby="basic-addon1">
+      <div *ngIf="roundNumber.invalid && submitted" class="alert-danger">
+        <div *ngIf="roundNumber.errors.required">Round number is required</div>
+      </div>
+    </form>
+  </div>
   <h2>Turnering: {{tournament.name}}</h2>
   <h4>Mængden af runder: {{tournament.numberOfRounds}}</h4>
   <h4>Start dato: {{tournament.startDate | date: 'dd-MM-yyyy'}}</h4>
