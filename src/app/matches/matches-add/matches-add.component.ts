@@ -55,7 +55,10 @@ export class MatchesAddComponent implements OnInit {
     m.GuestScore = 0;
     this.listOfMatches.push(m);
     this.lookupForm.reset();
-
+  }
+  removeFromList(m: Match) {
+    const indexOfM = this.listOfMatches.indexOf(m);
+    this.listOfMatches.splice(indexOfM, 1);
   }
 
   addMatchToRound(tournament: Tournament, round: Round) {
