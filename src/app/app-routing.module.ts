@@ -13,6 +13,7 @@ import {RoundAddComponent} from './rounds/round-add/round-add.component';
 import {RoundUpdateComponent} from './rounds/round-update/round-update.component';
 import {HomeComponent} from './home/home.component';
 import {RulesComponent} from './rules/rules.component';
+import {UserTipsComponent} from './matches/user-tips/user-tips.component';
 import {UserRoundsListComponent} from './rounds/user-rounds-list/user-rounds-list.component';
 import {MatchesAddComponent} from './matches/matches-add/matches-add.component';
 import {TournamentAddComponent} from './tournaments/tournament-add/tournament-add.component';
@@ -37,9 +38,10 @@ const routes: Routes = [
   {path: 'user-rounds-list', component: UserRoundsListComponent},
   {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
   {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'user-tips', component: UserTipsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'rules', component: RulesComponent, canActivate: [AuthGuard]},
-  {path: 'add-match', component: MatchesAddComponent},
+  {path: 'add-MatchRound/:id', component: MatchesAddComponent, canActivate: [AuthGuard]},
   {path: 'addTournament', component: TournamentAddComponent},
   {path: 'tournamentList', component: TournamentListComponent}
 ];

@@ -16,7 +16,6 @@ export class RoundsDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    debugger;
     this.roundService.getOneRound(id)
       .subscribe(roundFromRest => {
         this.round = roundFromRest;

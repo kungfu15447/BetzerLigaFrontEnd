@@ -15,7 +15,7 @@
       <td>{{onGoingTournaments.indexOf(tournament)+1}}</td>
       <td><a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a></td>
       <td>{{tournament.numberOfRounds}}</td>
-      <td>{{ tournament.startDate | date:'dd-MM-yyyy'}}</td>
+      <td>{{tournament.startDate | date:'dd-MM-yyyy'}}</td>
       <td>{{tournament.endDate | date: 'dd-MM-yyyy'}}</td>
     </tr>
     </tbody>
