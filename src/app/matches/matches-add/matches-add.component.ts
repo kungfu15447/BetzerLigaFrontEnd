@@ -17,7 +17,7 @@ export class MatchesAddComponent implements OnInit {
   StartDate: new FormControl(''),
   HomeScore: new FormControl(''),
   GuestScore: new FormControl(''),
-  Round: new FormControl(''),
+  RoundId: new FormControl(''),
 });
 
   matchValues = ['HomeTeam', 'GuestTeam', 'StartDate'];
@@ -31,6 +31,7 @@ export class MatchesAddComponent implements OnInit {
   }
     addToList() {
       const m  = this.lookupForm.value;
+      m.RoundId = 1;
       m.HomeScore = 0;
       m.GuestScore = 0;
       this.listOfMatches.push(m);
