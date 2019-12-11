@@ -21,8 +21,9 @@ import { RoundUpdateComponent } from './rounds/round-update/round-update.compone
 import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-list.component';
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
-import { MatchesAddComponent } from './matches/matches-add/matches-add.component';
+import { UserTipsComponent } from './matches/user-tips/user-tips.component';
 import { MatchesUpdateComponent } from './matches/matches-update/matches-update.component';
+import { MatchesAddComponent } from './matches/matches-add/matches-add.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TournamentAddComponent } from './tournaments/tournament-add/tournament-add.component';
 import { TournamentListComponent } from './tournaments/tournament-list/tournament-list.component';
@@ -45,6 +46,7 @@ import {BsDatepickerModule} from "ngx-bootstrap";
     UserRoundsListComponent,
     HomeComponent,
     RulesComponent,
+    UserTipsComponent,
     MatchesAddComponent,
     MatchesUpdateComponent,
     TournamentAddComponent,
@@ -58,7 +60,9 @@ import {BsDatepickerModule} from "ngx-bootstrap";
     AppRoutingModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     AuthGuard,

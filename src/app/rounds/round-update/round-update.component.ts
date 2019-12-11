@@ -10,10 +10,11 @@ import {RoundService} from '../shared/round.service';
 })
 export class RoundUpdateComponent implements OnInit {
 
-  id:number;
+  id: number;
   roundForm = new FormGroup({
     roundNumber: new FormControl(''),
-    totalGoals: new FormControl('')
+    totalGoals: new FormControl(''),
+    tournamentId: new FormControl('')
   });
 
   constructor(private route: ActivatedRoute,
@@ -26,7 +27,8 @@ export class RoundUpdateComponent implements OnInit {
       .subscribe(roundFromRest => {
         this.roundForm.patchValue({
           roundNumber: roundFromRest.roundNumber,
-          totalGoals: roundFromRest.totalGoals
+          totalGoals: roundFromRest.totalGoals,
+          tournamenId: roundFromRest.tournamentId
         });
       });
   }

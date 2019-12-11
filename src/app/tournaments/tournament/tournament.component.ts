@@ -7,6 +7,9 @@ import {RoundService} from '../../rounds/shared/round.service';
 import {totalmem} from 'os';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthenticationService} from '../../Shared/services/authentication.service';
+import {partition} from 'rxjs/operators';
+import {User} from '../../Shared/User.model';
+import {UserTour} from '../../Shared/UserTour.model';
 
 @Component({
   selector: 'app-tournament',
@@ -14,54 +17,87 @@ import {AuthenticationService} from '../../Shared/services/authentication.servic
   styleUrls: ['./tournament.component.scss']
 })
 export class TournamentComponent implements OnInit {
+  loggedInUser: User;
   tournament: Tournament;
   loading: boolean;
   submitted = false;
   round: any = {};
-  roundForm = new FormGroup({
-    roundNumber: new FormControl(''),
-    totalGoals: new FormControl(''),
-    tournamentId: new FormControl(''),
-    tournament: new FormControl(''),
-    tippingDeadLine: new FormControl('')
-  });
 
   constructor(private route: ActivatedRoute,
               private tourService: TournamentService,
               private roundService: RoundService,
               private authService: AuthenticationService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
+    this.loggedInUser = this.authService.getUser();
     this.getTour();
-  }
-
-  get tippingDeadline() {
-    return this.roundForm.get('tippingDeadLine');
   }
 
   getTour(): void {
     this.loading = true;
     const id = +this.route.snapshot.paramMap.get('id');
     this.tourService.getTour(id)
-      .subscribe(tournament => this.tournament = tournament);
-    this.loading = false;
+      .subscribe(tournament => {
+        this.tournament = tournament;
+        this.getActiveRound();
+        this.tourService.updateTour(this.tournament);
+        this.roundService.updateRound(this.round);
+        this.loading = false;
+      });
+
   }
 
-  /*addRound(): void {
-    this.submitted = true;
-    const currentTournament = this.tournament;
-    const roundFromFields = this.roundForm.value;
-    roundFromFields.totalGoals = 0;
-    roundFromFields.tournamentId = currentTournament.id;
-    roundFromFields.roundNumber = (currentTournament.rounds.length + 1);
-    if (currentTournament.rounds.length < currentTournament.numberOfRounds || roundFromFields.roundNumber !== 0) {
-      this.roundService.addRound(roundFromFields).subscribe(
-        roundo => currentTournament.rounds.push(roundo)
-      );
-    } else {
-    }
-  }*/
+  isInTournament(): boolean {
+    let isIn = false;
+    this.tournament.participants.forEach( (participant) => {
+      if (participant.userId === this.loggedInUser.id) {
+        isIn = true;
+      }
+    });
+    return isIn;
+  }
 
+  participate(): void {
+    const participant: UserTour = {
+      userId: this.loggedInUser.id,
+      user: this.loggedInUser,
+      tournamentId: this.tournament.id,
+      tournament: null,
+      totalUserPoints: 0
+    };
+    this.tournament.participants.push(participant);
+    this.tourService.updateTour(this.tournament).subscribe();
+  }
+
+  removeFromParticipants(): void {
+    this.tournament.participants = this.tournament.participants
+      .filter(p => p.userId !== this.loggedInUser.id);
+    this.tourService.updateTour(this.tournament)
+      .subscribe();
+  }
+
+  isTournamentStarted(): boolean {
+    const currentDateTime = new Date().valueOf();
+    const startDateTime = new Date(this.tournament.startDate).valueOf();
+    if (startDateTime > currentDateTime) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  getActiveRound(): void {
+    this.tournament.rounds.forEach( (round) => {
+      if (this.round === undefined) {
+        this.round = round;
+      } else if (this.round.roundNumber < round.roundNumber) {
+        const tippingDeadlineTime = new Date(round.tippingDeadLine).valueOf();
+        const currentDateTime = new Date().valueOf();
+        if (tippingDeadlineTime < currentDateTime) {
+          this.round = round;
+        }
+      }
+    });
+  }
 }
