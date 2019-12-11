@@ -49,7 +49,7 @@ export class TournamentComponent implements OnInit {
     this.loading = false;
   }
 
-  addRound(): void {
+  /*addRound(): void {
     this.submitted = true;
     const currentTournament = this.tournament;
     const roundFromFields = this.roundForm.value;
@@ -62,6 +62,6 @@ export class TournamentComponent implements OnInit {
       );
     } else {
     }
-  }
+  }*/
 
 }

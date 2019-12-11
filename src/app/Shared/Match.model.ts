@@ -10,5 +10,5 @@ export interface Match {
   StartDate: Date;
   Round: Round;
   RoundId: number;
-  Tips: UserMatch[];
+  Tips?: UserMatch[];
 }
