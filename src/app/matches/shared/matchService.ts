@@ -20,10 +20,9 @@ export class MatchService {
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
     this.getMatches();
   }
-
-  addMatch(match: Match[]): Observable<Match> {
+  addMatch(match: Match[]): Observable<Match[]> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.post<Match>(this.URL + 'matches', match);
+    return this.http.post<Match[]>(this.URL + 'matches', match);
   }
 
   getMatches(): Observable<Match[]> {

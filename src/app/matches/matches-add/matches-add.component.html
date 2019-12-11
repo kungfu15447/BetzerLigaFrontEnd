@@ -38,12 +38,13 @@
             </tbody>
           </table>
         </div>
+        <div *ngIf="listOfMatches.length == 12">
+          <button type="submit" (click)="addToRound()">add to round</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 </div>
-  <div *ngIf="listOfMatches.length == 12">
-    <button type="submit" (click)="addToRound()">add to round</button>
-  </div>
+
 </div>

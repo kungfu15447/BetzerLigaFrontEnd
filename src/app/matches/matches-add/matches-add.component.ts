@@ -4,6 +4,8 @@ import {MatchService} from '../shared/matchService';
 import {Router} from '@angular/router';
 import {RoundService} from '../../rounds/shared/round.service';
 import {Match} from '../../Shared/Match.model';
+import {Round} from "../../Shared/Round.model";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-matches-add',
@@ -20,18 +22,20 @@ export class MatchesAddComponent implements OnInit {
   RoundId: new FormControl(''),
 });
 
+  round: Round;
   matchValues = ['HomeTeam', 'GuestTeam', 'StartDate'];
   listOfMatches: Match[] = [];
-  constructor(private matchService: MatchService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private matchService: MatchService, private roundService: RoundService, private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute) {
     this.createForm();
   }
 
   ngOnInit() {
-
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.roundService.getOneRound(id).subscribe(roundFromRest => this.round = roundFromRest);
   }
     addToList() {
       const m  = this.lookupForm.value;
-      m.RoundId = 1;
+      m.RoundId = +this.route.snapshot.paramMap.get('id');
       m.HomeScore = 0;
       m.GuestScore = 0;
       this.listOfMatches.push(m);
@@ -39,8 +43,7 @@ export class MatchesAddComponent implements OnInit {
 
     }
     addToRound() {
-
-    this.matchService.addMatch(this.listOfMatches);
+    this.matchService.addMatch(this.listOfMatches)
     }
 
   createForm() {
