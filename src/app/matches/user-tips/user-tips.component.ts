@@ -7,10 +7,8 @@ import {Form, FormArray, FormBuilder, FormControl, FormGroup} from '@angular/for
 import {AuthenticationService} from '../../Shared/services/authentication.service';
 import {User} from '../../Shared/User.model';
 import {UserMatch} from '../../Shared/UserMatch.model';
-import {variable} from '@angular/compiler/src/output/output_ast';
 import {Router} from '@angular/router';
-import {MatchService} from '../shared/match.service';
-import {templateVisitAll} from "@angular/compiler";
+import {MatchService} from '../shared/matchService';
 
 @Component({
   selector: 'app-user-tips',
@@ -48,7 +46,7 @@ export class UserTipsComponent implements OnInit {
         this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
         this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
         for (const match of roundFromRest[0].matches) {
-          for (const tips of match.tips) {
+          for (const tips of match.Tips) {
             console.log(tips);
             this.tipsForUser.push(tips);
           }
