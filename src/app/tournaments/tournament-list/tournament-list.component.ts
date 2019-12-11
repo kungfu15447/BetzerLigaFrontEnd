@@ -14,7 +14,6 @@ export class TournamentListComponent implements OnInit {
   onGoingTournaments: Tournament[] = [];
   newTournaments: Tournament[] = [];
   loading: boolean;
-  startDate: Date;
 
   constructor(private tourService: TournamentService) { }
 

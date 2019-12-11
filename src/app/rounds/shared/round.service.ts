@@ -3,11 +3,13 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Round} from '../../Shared/Round.model';
 import {environment} from '../../../environments/environment';
+import {User} from '../../Shared/User.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoundService {
+
 
   apiUrl = environment.apiUrl + 'rounds';
 
@@ -36,5 +38,9 @@ export class RoundService {
 
   getCurrentRound(): Observable<Round[]> {
     return this.http.get<Round[]>(this.apiUrl + '?tournament=tour');
+  }
+
+  getCurrentRoundSearchedMatches(userId: number): Observable<Round[]> {
+    return this.http.get<Round[]>(this.apiUrl + '?tournament=matches&userId=' + userId);
   }
 }

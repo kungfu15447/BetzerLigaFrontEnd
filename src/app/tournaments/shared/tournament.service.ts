@@ -23,4 +23,9 @@ export class TournamentService {
   addTour(tour: Tournament): Observable<Tournament> {
     return this.http.post<Tournament>(this.tourURL, tour);
   }
+
+  updateTour(tour: Tournament): Observable<Tournament> {
+    const url = `${this.tourURL}/${tour.id}`;
+    return this.http.put<Tournament>(url, tour);
+  }
 }
