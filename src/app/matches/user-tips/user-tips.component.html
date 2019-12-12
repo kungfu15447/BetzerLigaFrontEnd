@@ -19,32 +19,29 @@
     </ng-form>
   </li>
 </div>-->
-<div align="center">
-  <form [formGroup]="matchForm">
-    <table class="table table-dark">
 
-        <thead>
-        <tr>
-          <th scope="col">Home team</th>
-          <th scope="col">Home tip</th>
-          <th scope="col">Guest team</th>
-          <th scope="col">Guest tip</th>
-          <th scope="col">Rating</th>
-        </tr>
-        </thead>
-        <tbody formArrayName="credentials" *ngFor="let match of matches" (ngSubmit)="save()">
-        <tr>
-          <td align="left">{{match.homeTeam}}</td>
-          <td align="left"><input ></td>
-          <td>{{match.guestTeam}}</td>
-          <td><input>
-          </td>
-          <td><input></td>
-        </tr>
-        </tbody>
-      </table>
-
+<div class="container" *ngIf="matches">
+  <form [formGroup]="matchForm" (ngSubmit)="save()">
+      <div *ngFor="let formGroup of t.controls; let i = index">
+        <div [formGroup]="formGroup">
+          <div class="row">
+          <table class="table-bordered">
+            <tr>
+              <th>{{matches[i].homeTeam}}</th>
+              <th>{{matches[i].guestTeam}}</th>
+              <th>Rating</th>
+            </tr>
+            <tr>
+              <td><input formControlName="homeTip"></td>
+              <td><input formControlName="guestTip"></td>
+              <td><input formControlName="rating"></td>
+            </tr>
+          </table>
+          </div>
+    </div>
+      </div>
     <button color="primary" type="submit">Save</button>
   </form>
-</div>
 
+
+</div>

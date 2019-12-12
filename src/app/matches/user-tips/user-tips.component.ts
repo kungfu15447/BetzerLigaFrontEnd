@@ -9,8 +9,8 @@ import {User} from '../../Shared/User.model';
 import {UserMatch} from '../../Shared/UserMatch.model';
 import {variable} from '@angular/compiler/src/output/output_ast';
 import {Router} from '@angular/router';
-import {MatchService} from '../shared/match.service';
-import {templateVisitAll} from "@angular/compiler";
+import {templateVisitAll} from '@angular/compiler';
+import {UserMatchService} from '../shared/user-match.service';
 
 @Component({
   selector: 'app-user-tips',
@@ -30,10 +30,10 @@ export class UserTipsComponent implements OnInit {
               private authService: AuthenticationService,
               private userService: UserService,
               private router: Router,
-              private matchService: MatchService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private umService: UserMatchService) {
     this.matchForm = this.formBuilder.group({
-      credentials: this.formBuilder.array([])
+      credentials: new FormArray([])
     });
   }
 
@@ -49,7 +49,6 @@ export class UserTipsComponent implements OnInit {
         this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
         for (const match of roundFromRest[0].matches) {
           for (const tips of match.tips) {
-            console.log(tips);
             this.tipsForUser.push(tips);
           }
         }
@@ -57,28 +56,29 @@ export class UserTipsComponent implements OnInit {
       });
   }
 
-  createFormGroups(): FormArray {
-    const creds = this.matchForm.controls.credentials as FormArray;
-    for (let i = 0; i < this.tipsForUser.length; i++) {
-      console.log(i);
-      creds.push(this.formBuilder.group({
+  get f() {
+    return this.matchForm.controls;
+  }
+
+  get t() {
+    return this.f.credentials as FormArray;
+  }
+
+  createFormGroups() {
+    for (const tip of this.tipsForUser) {
+      this.t.push(this.formBuilder.group({
         homeTip: [''],
         guestTip: [''],
         rating: [''],
-        userId: [''],
-        matchId: [''],
+        userId: [tip.userId],
+        matchId: [tip.matchId],
       }));
     }
-    return creds;
   }
 
   save() {
-    this.tipsForUser = this.matchForm.value;
-    this.tipsForUser = this.currentUser.tips = [];
-    const userToUpdate = this.currentUser;
-    this.userService.updateUser(userToUpdate)
-      .subscribe(() => {
-        this.router.navigateByUrl('/rounds');
-      });
+    const listToSend = this.matchForm.controls.credentials.value;
+    debugger;
+    this.umService.addUserMatch(listToSend);
   }
 }
