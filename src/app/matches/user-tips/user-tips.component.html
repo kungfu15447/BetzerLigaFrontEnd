@@ -1,24 +1,3 @@
-<!--<div *ngIf="round && round.matches && tipsForUser">
-  <li *ngFor="let match of round.matches">
-    <h1>{{match.homeTeam}} vs. {{match.guestTeam}}</h1>
-    <ng-form [formGroup]="fixedMatchForm" (ngSubmit)="save()">
-      <label> {{match.homeTeam}}
-        <input placeholder="Home score" formControlName="homeTip">
-      </label>
-
-      <label> {{match.guestTeam}}
-        <input placeholder="Guest Score" formControlName="guestTip">
-      </label>
-
-      <label> Rating
-        <input placeholder="Rating" formControlName="rating">
-      </label>
-      <div fxLayoutAlign="end center">
-        <button color="primary" type="submit">Save</button>
-      </div>
-    </ng-form>
-  </li>
-</div>-->
 
 <div class="container" *ngIf="tipsForUser">
   <form [formGroup]="matchForm" (ngSubmit)="save()">

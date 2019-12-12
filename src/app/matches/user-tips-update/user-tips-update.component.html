@@ -1,1 +1,29 @@
-<p>user-tips-update works!</p>
+
+<div class="container" *ngIf="tipsFromUser">
+  <form [formGroup]="matchForm" (ngSubmit)="save()">
+    <div *ngFor="let formGroup of t.controls; let i = index">
+      <div [formGroup]="formGroup">
+        <div class="row">
+          <table class="table-bordered">
+            <thead class="theader">
+            <tr>
+              <th>{{tipsFromUser[i].match.homeTeam}}</th>
+              <th>{{tipsFromUser[i].match.guestTeam}}</th>
+              <th>Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><input class="input-field"formControlName="homeTip"></td>
+              <td><input class="input-field" formControlName="guestTip"></td>
+              <td><input class="input-field" formControlName="rating"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <button color="primary" type="submit">Save</button>
+  </form>
+</div>
+

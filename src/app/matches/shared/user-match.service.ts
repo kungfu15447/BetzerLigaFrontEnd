@@ -24,11 +24,16 @@ export class UserMatchService {
 
   apiUrl = environment.apiUrl;
 
-  addUserMatch(userMatches: UserMatch[]) {
-    this.http.post<Match>(this.apiUrl + 'Matches/', userMatches);
+  addUserMatches(userMatches: UserMatch[]) {
+    this.http.post<UserMatch>(this.apiUrl + 'userMatches', userMatches);
   }
 
   getUserMatches(userId: number, roundId: number): Observable<UserMatch[]> {
     return this.http.get<UserMatch[]>(this.apiUrl + 'userMatches?userId=' + userId + '&roundId=' + roundId);
+  }
+
+  updateUserMatches(userMatches: UserMatch[]): Observable<UserMatch[]> {
+    debugger;
+    return this.http.put<UserMatch[]>(this.apiUrl + 'userMatches', userMatches);
   }
 }

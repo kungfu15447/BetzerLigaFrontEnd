@@ -74,6 +74,6 @@ export class UserTipsComponent implements OnInit {
 
   save() {
     const listToSend = this.matchForm.controls.credentials.value;
-    this.umService.addUserMatch(listToSend);
+    this.umService.addUserMatches(listToSend);
   }
 }
