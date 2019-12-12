@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {RoundService} from '../../rounds/shared/round.service';
 import {AuthenticationService} from '../../Shared/services/authentication.service';
-import {UserService} from '../../Shared/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {UserMatchService} from '../shared/user-match.service';
+import {UserService} from '../../users/shared/user.service';
 
 @Component({
   selector: 'app-user-tips-update',
