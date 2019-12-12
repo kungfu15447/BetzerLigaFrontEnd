@@ -1,9 +1,15 @@
-<button routerLink="/tournamentList">back</button>
-<div class="container">
+<div>
+  <ui-switch [(ngModel)]="edit">
+    <button class="btn-primary"></button>
+  </ui-switch>
+</div>
+
+<div class="container" *ngIf="!edit">
+  <button class="btn btn-primary" routerLink="/tournamentList">back</button>
   <div style="text-align: center">
     <div style="display: inline-block">
       <div class="row" style="padding: 25px">
-        <div>
+        <div *ngIf="!loading">
           <div class="card">
             <div class="card-body">
               <table class="table" style="width: 600px">
@@ -15,16 +21,44 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let m of listOfMatches">
+                <tr *ngFor="let m of round.matches">
                   <td>{{m.guestTeam}}</td>
                   <td>{{m.homeTeam}}</td>
-                  <td>{{m.startDate}}</td>
+                  <td>{{m.startDate | date: 'dd/MM/yyyy hh:mm'}}</td>
+                  <button (click)="delete(m.id)">fjern kamp</button>
                 </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+        <div *ngIf="loading">
+          <h2>Loading...</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="edit">
+  <div style="text-align: center">
+    <div style="display: inline-block">
+      <div class="row" style="padding: 25px">
+        <form [formGroup]="matchForm" (ngSubmit)="save()">
+          <div *ngFor="let m of round.matches">
+            <div>
+              <div fxLayout="column">
+                <input type="text" placeholder="{{m.guestTeam}}" formControlName="guestTeam">
+                <input type="text" placeholder="{{m.homeTeam}}" formControlName="homeTeam">
+                <input type="datetime-local" placeholder="{{m.startDate}}" formControlName="startDate" required>
+              </div>
+            </div>
+          </div>
+          <div fxLayoutAlign="end center">
+            <button color="primary" type="submit">Save</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

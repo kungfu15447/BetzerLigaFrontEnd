@@ -1,3 +1,4 @@
+import { UiSwitchModule } from 'ngx-toggle-switch';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +23,6 @@ import { UserRoundsListComponent } from './rounds/user-rounds-list/user-rounds-l
 import { HomeComponent } from './home/home.component';
 import { RulesComponent } from './rules/rules.component';
 import { UserTipsComponent } from './matches/user-tips/user-tips.component';
-import { MatchesUpdateComponent } from './matches/matches-update/matches-update.component';
 import { MatchesAddComponent } from './matches/matches-add/matches-add.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TournamentAddComponent } from './tournaments/tournament-add/tournament-add.component';
@@ -52,12 +52,11 @@ import { UserTipsListComponent } from './matches/user-tips-list/user-tips-list.c
     RulesComponent,
     UserTipsComponent,
     MatchesAddComponent,
-    MatchesUpdateComponent,
     TournamentAddComponent,
     TournamentListComponent,
     RoundMatchComponent,
     UserTipsUpdateComponent,
-    UserTipsListComponent
+    UserTipsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +67,8 @@ import { UserTipsListComponent } from './matches/user-tips-list/user-tips-list.c
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    UiSwitchModule
   ],
   providers: [
     AuthGuard,

@@ -49,10 +49,6 @@ export class MatchesAddComponent implements OnInit {
   ngOnInit() {
 
   }
-    addToRound() {
-    this.matchService.addMatch(this.listOfMatches);
-    this.getTour();
-  }
 
   addToList() {
     const m = this.lookupForm.value;
@@ -99,6 +95,8 @@ export class MatchesAddComponent implements OnInit {
   }
 
   addRound(): void {
+    this.matchService.addMatch(this.listOfMatches);
+    this.getTour();
     this.submitted = true;
     const currentTournament = this.tournament;
     const roundFromFields = this.roundForm.value;

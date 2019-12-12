@@ -47,7 +47,7 @@ const routes: Routes = [
   {path: 'add-MatchRound/:id', component: MatchesAddComponent, canActivate: [AuthGuard]},
   {path: 'addTournament', component: TournamentAddComponent, canActivate: [AuthGuard]},
   {path: 'tournamentList', component: TournamentListComponent, canActivate: [AuthGuard]},
-  {path: 'RoundMatch', component: RoundMatchComponent, canActivate: [AuthGuard]},
+  {path: 'RoundMatch/:id', component: RoundMatchComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
