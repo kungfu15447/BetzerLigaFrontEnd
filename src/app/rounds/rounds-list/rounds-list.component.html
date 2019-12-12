@@ -2,9 +2,9 @@
 <ul *ngIf="rounds">
   <li *ngFor="let round of rounds">
     <a routerLink="/rounds/{{round.id}}">{{round.roundNumber}} | Tournament name:{{round.tournament.name}}</a>
-    <button (click)="deleteRound(round.id)">Delete</button>
+    <a class="glyphicon glyphicon-minus-sign" (click)="deleteRound(round.id)" color="primary"></a>
     <button routerLink="/round-update/{{round.id}}">Update</button>
-    <button routerLink="/user-rounds-list/{{round.id}}">See Users</button>
+    <button routerLink="/user-rounds-list/{{round.id}}">See users</button>
   </li>
 </ul>
-<button color="primary" routerLink="/round-add">Add</button>
+<a color="primary" class="glyphicon glyphicon-plus-sign" routerLink="/round-add"></a>

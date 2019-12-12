@@ -15,9 +15,7 @@ import {User} from '../../Shared/User.model';
 export class TournamentLeaderboardComponent implements OnInit {
   tournaments: Tournament[] ;
   tournament: Tournament;
-  userTour = {} as any;
   favTournaments: UserTour[] = [];
-  favTournament = {} as any;
   showFavorites: boolean;
   user: User;
   loading: boolean;
@@ -46,19 +44,6 @@ export class TournamentLeaderboardComponent implements OnInit {
   }
   showOnlyFavorites(): void {
     const user = this.user;
-    const list = [];
-    const favoriteTour = this.userTour;
-    /*user.following.forEach( follower => {
-      favoriteTour.user = follower.follow;
-      this.tournament.participants.forEach(participant => {
-        if (favoriteTour.user.id === participant.userId) {
-          favoriteTour.totalUserPoints = participant.totalUserPoints;
-        }
-      });
-      list.push(favoriteTour);
-      debugger;
-    });*/
-
     this.tournament.participants.forEach(participant => {
       user.following.forEach( follower => {
         if (follower.followId === participant.userId) {

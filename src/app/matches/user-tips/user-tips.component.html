@@ -20,20 +20,28 @@
   </li>
 </div>-->
 
-<form [formGroup]="matchForm">
-
-    <h2>Credentials</h2>
-    <div formArrayName="credentials" *ngFor="let creds of matchForm.controls.credentials?.value, let i = index" (ngSubmit)="save()">
-      <ng-container [formGroupName]="i">
-        <label> HomeTip</label>
-        <input placeholder="Home Tip" formControlName="homeTip">
-        <label>GuestTip</label>
-        <input placeholder="Guest Tip" formControlName="guestTip">
-        <label>Rating</label>
-        <input placeholder="Rating" formControlName="rating">
-      </ng-container>
+<div class="container" *ngIf="matches">
+  <form [formGroup]="matchForm" (ngSubmit)="save()">
+      <div *ngFor="let formGroup of t.controls; let i = index">
+        <div [formGroup]="formGroup">
+          <div class="row">
+          <table class="table-bordered">
+            <tr>
+              <th>{{matches[i].homeTeam}}</th>
+              <th>{{matches[i].guestTeam}}</th>
+              <th>Rating</th>
+            </tr>
+            <tr>
+              <td><input formControlName="homeTip"></td>
+              <td><input formControlName="guestTip"></td>
+              <td><input formControlName="rating"></td>
+            </tr>
+          </table>
+          </div>
     </div>
+      </div>
     <button color="primary" type="submit">Save</button>
-</form>
+  </form>
 
 
+</div>

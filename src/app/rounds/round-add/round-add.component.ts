@@ -3,6 +3,7 @@ import {RoundService} from '../shared/round.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Round} from '../../Shared/Round.model';
+import {AuthenticationService} from '../../Shared/services/authentication.service';
 
 @Component({
   selector: 'app-round-add',
