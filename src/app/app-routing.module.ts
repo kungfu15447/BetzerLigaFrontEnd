@@ -19,6 +19,7 @@ import {MatchesAddComponent} from './matches/matches-add/matches-add.component';
 import {TournamentAddComponent} from './tournaments/tournament-add/tournament-add.component';
 import {TournamentListComponent} from './tournaments/tournament-list/tournament-list.component';
 import {UserTipsListComponent} from './matches/user-tips-list/user-tips-list.component';
+import {TournamentUpdateComponent} from './tournaments/tournament-update/tournament-update.component';
 
 
 
@@ -45,7 +46,8 @@ const routes: Routes = [
   {path: 'rules', component: RulesComponent, canActivate: [AuthGuard]},
   {path: 'add-MatchRound/:id', component: MatchesAddComponent, canActivate: [AuthGuard]},
   {path: 'addTournament', component: TournamentAddComponent},
-  {path: 'tournamentList', component: TournamentListComponent}
+  {path: 'tournamentList', component: TournamentListComponent},
+  {path: 'tournament-update/:id', component: TournamentUpdateComponent}
 ];
 
 @NgModule({
