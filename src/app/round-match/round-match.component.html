@@ -1,0 +1,31 @@
+<button routerLink="/tournamentList">back</button>
+<div class="container">
+  <div style="text-align: center">
+    <div style="display: inline-block">
+      <div class="row" style="padding: 25px">
+        <div>
+          <div class="card">
+            <div class="card-body">
+              <table class="table" style="width: 600px">
+                <thead>
+                <tr>
+                  <th scope="col">GuestTeam</th>
+                  <th scope="col">HomeTeam</th>
+                  <th scope="col">StartDate</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let m of listOfMatches">
+                  <td>{{m.guestTeam}}</td>
+                  <td>{{m.homeTeam}}</td>
+                  <td>{{m.startDate}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
