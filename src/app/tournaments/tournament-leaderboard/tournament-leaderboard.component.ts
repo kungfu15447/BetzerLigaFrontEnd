@@ -39,39 +39,6 @@ export class TournamentLeaderboardComponent implements OnInit {
       )
       .subscribe(tournaments => {
         this.tournament = tournaments.length > 0 ? tournaments[0] : undefined;
-        this.showOnlyFavorites();
       });
   }
-  showOnlyFavorites(): void {
-    const user = this.user;
-    this.tournament.participants.forEach(participant => {
-      user.following.forEach( follower => {
-        if (follower.followId === participant.userId) {
-          this.favTournaments.push(participant);
-        }
-      });
-    });
-  }
-
-  changeShowFavorites(): void {
-    if (!this.showFavorites) {
-      this.showFavorites = true;
-    } else {
-      this.showFavorites = false;
-      console.log(this.tournament.name);
-      this.logTournement();
-      this.loading = false;
-      console.log(this.tournament.name);
-    }
-  }
-    logTournement()
-    {
-      console.log(this.tournament.name);
-    }
-
-    clickedTheButton() {
-      if (this.tournament) {
-        console.log(this.tournament.name);
-      }
-    }
 }
