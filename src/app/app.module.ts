@@ -7,7 +7,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { RoundsListComponent } from './rounds/rounds-list/rounds-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {UserService} from './Shared/user.service';
+import {UserService} from './users/shared/user.service';
 import { NavbarComponent } from './Shared/Navbar/navbar.component';
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
 import { TournamentLeaderboardComponent } from './tournaments/tournament-leaderboard/tournament-leaderboard.component';

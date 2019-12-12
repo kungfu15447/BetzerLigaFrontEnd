@@ -2,18 +2,17 @@
      fxFill
      fxLayoutGap="10px">
   <div fxLayout="row">
-    <button class="btn btn-primary" routerLink="/users">Back</button>
+    <button class="btn btn-primary" routerLink="/users">Tilbage</button>
   </div>
   <div *ngIf="user"
        fxLayout="row" fxLayoutAlign="center top">
     <h2>{{user.firstname}} {{user.lastname}}</h2>
     <p>Email: {{user.email}}</p>
-    <p>Id: {{user.id}}</p>
       <div *ngIf="!checkIfUserIsFollowed()">
-        <button class="btn btn-primary" (click)="addFavorite()">Add favorite</button>
+        <button class="btn btn-primary" (click)="addFavorite()">Tilføj favorit</button>
       </div>
     <div *ngIf="checkIfUserIsFollowed()">
-      <button class="btn btn-danger" (click)="removeFavorite()">Remove from favorite</button>
+      <button class="btn btn-danger" (click)="removeFavorite()">Fjern favorit</button>
     </div>
     <span fxFlex></span>
   </div>
