@@ -21,7 +21,7 @@ export class TournamentComponent implements OnInit {
   tournament: Tournament;
   loading: boolean;
   submitted = false;
-  round: any = {};
+  round: Round;
 
   constructor(private route: ActivatedRoute,
               private tourService: TournamentService,
@@ -98,6 +98,13 @@ export class TournamentComponent implements OnInit {
           this.round = round;
         }
       }
+    });
+    this.round.roundPoints.forEach( (roundPoint) =>  {
+      this.tournament.participants.forEach( (user) => {
+        if (user.userId === roundPoint.userId) {
+          roundPoint.user = user.user;
+        }
+      });
     });
   }
 }
