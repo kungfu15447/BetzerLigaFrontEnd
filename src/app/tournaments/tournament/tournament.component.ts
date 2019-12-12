@@ -74,19 +74,7 @@ export class TournamentComponent implements OnInit {
     };
     this.tournament.participants.push(participant);
     this.tourService.updateTour(this.tournament)
-      .subscribe( () => {
-        this.tournament.rounds.forEach( (roundInTour) => {
-          const userRound: UserRound = {
-            userId: this.loggedInUser.id,
-            user: this.loggedInUser,
-            roundId: roundInTour.id,
-            round: null,
-            userPoints: 0
-          };
-          roundInTour.roundPoints.push(userRound);
-          this.roundService.updateRound(roundInTour);
-        });
-      });
+      .subscribe();
   }
 
   removeFromParticipants(): void {

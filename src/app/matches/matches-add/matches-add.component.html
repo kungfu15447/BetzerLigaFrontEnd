@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://unpkg.com/ngx-bootstrap/datepicker/bs-datepicker.css">
 <div style="text-align: center">
   <div style="display: inline-block">
+    <div *ngIf="listOfMatches.length < 12">
     <form [formGroup]="lookupForm">
       <div style="padding: 25px">
         <input type="text" formControlName="guestTeam" placeholder="Gæste hold" required>
@@ -9,6 +10,7 @@
         <button type="submit" (click)="addToList()">Tilføj til liste</button>
       </div>
     </form>
+    </div>
   </div>
 </div>
 
@@ -41,9 +43,6 @@
               </table>
             </div>
           </div>
-        </div>
-        <div *ngIf="listOfMatches.length == 12">
-          <button type="submit" (click)="addToRound()">add to round</button>
         </div>
       </div>
     </div>

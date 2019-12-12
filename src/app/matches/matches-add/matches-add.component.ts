@@ -48,17 +48,13 @@ export class MatchesAddComponent implements OnInit {
   }
 
   ngOnInit() {
-
-  }
-    addToRound() {
-    this.matchService.addMatch(this.listOfMatches);
     this.getTour();
   }
 
   addToList() {
     const m = this.lookupForm.value;
-    m.HomeScore = 0;
-    m.GuestScore = 0;
+    m.homeScore = 0;
+    m.guestScore = 0;
     this.listOfMatches.push(m);
     this.lookupForm.reset();
   }
@@ -111,22 +107,7 @@ export class MatchesAddComponent implements OnInit {
         roundo => {
           currentTournament.rounds.push(roundo);
           this.addMatchToRound(currentTournament, roundo);
-          if (currentTournament.participants.length !== 0) {
-            currentTournament.participants.forEach( (participant) => {
-              const userRound: UserRound = {
-                user: participant.user,
-                userId: participant.userId,
-                round: roundo,
-                roundId: roundo.id,
-                userPoints: 0
-              };
-              roundo.roundPoints = [];
-              roundo.roundPoints.push(userRound);
-            });
-            this.roundService.updateRound(roundo);
-          }
-        }
-      );
+        });
     }
   }
 }
