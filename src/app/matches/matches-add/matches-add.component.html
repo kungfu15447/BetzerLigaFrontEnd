@@ -3,10 +3,10 @@
   <div style="display: inline-block">
     <form [formGroup]="lookupForm">
       <div style="padding: 25px">
-        <input type="text" formControlName="GuestTeam" placeholder="GuestTeam" required>
-        <input type="text" formControlName="HomeTeam" placeholder="Hometeam" required>
-        <input type="datetime-local" formControlName="StartDate" placeholder="StartDate" required>
-        <button type="submit" (click)="addToList()">add to list</button>
+        <input type="text" formControlName="guestTeam" placeholder="Gæste hold" required>
+        <input type="text" formControlName="homeTeam" placeholder="Hjemme hold" required>
+        <input type="datetime-local" formControlName="startDate" placeholder="StartDate" required>
+        <button type="submit" (click)="addToList()">Tilføj til liste</button>
       </div>
     </form>
   </div>
@@ -23,6 +23,7 @@
               <table class="table" style="width: 600px">
                 <thead>
                 <tr>
+                  <th scope="col">#</th>
                   <th scope="col">Gæste hold</th>
                   <th scope="col">Hjemme hold</th>
                   <th scope="col">Start dato</th>
@@ -30,6 +31,7 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let m of listOfMatches">
+                  <td>{{listOfMatches.indexOf(m) + 1}}</td>
                   <td>{{m.guestTeam}}</td>
                   <td>{{m.homeTeam}}</td>
                   <td>{{m.startDate}}</td>

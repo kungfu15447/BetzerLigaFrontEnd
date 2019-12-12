@@ -28,4 +28,9 @@ export class TournamentService {
     const url = `${this.tourURL}/${tour.id}`;
     return this.http.put<Tournament>(url, tour);
   }
+
+  deleteTour(id: number): Observable<Tournament> {
+    const url = `${this.tourURL}/${id}`;
+    return this.http.delete<Tournament>(url);
+  }
 }

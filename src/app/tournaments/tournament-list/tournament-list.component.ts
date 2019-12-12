@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Tournament} from '../../Shared/Tournament.model';
 import {TournamentService} from '../shared/tournament.service';
 import {take} from 'rxjs/operators';
-import {start} from 'repl';
 import {AuthenticationService} from '../../Shared/services/authentication.service';
 import {User} from '../../Shared/User.model';
 
@@ -41,6 +40,7 @@ export class TournamentListComponent implements OnInit {
   }
 
   getOnGoingTours(): void {
+    this.onGoingTournaments = [];
     const currentDateTime = new Date().valueOf();
     this.tournaments.forEach( (tournament) => {
       const startDateTime = new Date(tournament.startDate).valueOf();
@@ -51,6 +51,7 @@ export class TournamentListComponent implements OnInit {
   }
 
   getNewTournaments(): void {
+    this.newTournaments = [];
     const currentDateTime = new Date().valueOf();
     this.tournaments.forEach((tournament) => {
       const startDateTime = new Date(tournament.startDate).valueOf();
@@ -58,5 +59,12 @@ export class TournamentListComponent implements OnInit {
         this.newTournaments.push(tournament);
       }
     });
+  }
+
+  deleteTour(id: number): void {
+    this.tourService.deleteTour(id)
+      .subscribe( () => {
+        this.getTours();
+      });
   }
 }

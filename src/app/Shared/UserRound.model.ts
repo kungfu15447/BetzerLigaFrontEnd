@@ -3,7 +3,7 @@ import {Round} from './Round.model';
 
 
 export interface UserRound {
-  id: number;
+  id?: number;
   user: User;
   userId: number;
   round: Round;

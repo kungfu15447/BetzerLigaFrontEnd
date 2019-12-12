@@ -17,7 +17,7 @@
         <td>
           <a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a>
           <button class="btn btn-warning" routerLink="/tournament-update/{{tournament.id}}">Rediger</button>
-          <button class="btn btn-danger">Slet</button>
+          <button class="btn btn-danger" (click)="deleteTour(tournament.id)">Slet</button>
         </td>
       </div>
       <div *ngIf="!loggedInUser.isAdmin">
@@ -53,7 +53,7 @@
         <td>
           <a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a>
           <button class="btn btn-warning" routerLink="/tournament-update/{{tournament.id}}">Rediger</button>
-          <button class="btn btn-danger">Slet</button>
+          <button class="btn btn-danger" (click)="deleteTour(tournament.id)">Slet</button>
         </td>
       </div>
       <div *ngIf="!loggedInUser.isAdmin">

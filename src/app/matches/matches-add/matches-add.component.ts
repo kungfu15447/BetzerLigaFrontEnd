@@ -7,6 +7,7 @@ import {Match} from '../../Shared/Match.model';
 import {Tournament} from '../../Shared/Tournament.model';
 import {TournamentService} from '../../tournaments/shared/tournament.service';
 import {Round} from '../../Shared/Round.model';
+import {UserRound} from '../../Shared/UserRound.model';
 
 @Component({
   selector: 'app-matches-add',
@@ -18,12 +19,12 @@ export class MatchesAddComponent implements OnInit {
   loading: boolean;
   submitted = false;
   lookupForm = new FormGroup({
-  HomeTeam: new FormControl(''),
-  GuestTeam: new FormControl(''),
-  StartDate: new FormControl(''),
-  HomeScore: new FormControl(''),
-  GuestScore: new FormControl(''),
-  RoundId: new FormControl(''),
+  homeTeam: new FormControl(''),
+  guestTeam: new FormControl(''),
+  startDate: new FormControl(''),
+  homeScore: new FormControl(''),
+  guestScore: new FormControl(''),
+  roundId: new FormControl(''),
 });
   roundForm = new FormGroup({
     roundNumber: new FormControl(''),
@@ -76,11 +77,11 @@ export class MatchesAddComponent implements OnInit {
 
   createForm() {
     this.lookupForm = this.formBuilder.group({
-      HomeTeam: '',
-      GuestTeam: '',
-      StartDate: '',
-      HomeScore: '',
-      GuestScore: '',
+      homeTeam: '',
+      guestTeam: '',
+      startDate: '',
+      homeScore: '',
+      guestScore: '',
     });
   }
 
@@ -110,10 +111,22 @@ export class MatchesAddComponent implements OnInit {
         roundo => {
           currentTournament.rounds.push(roundo);
           this.addMatchToRound(currentTournament, roundo);
+          if (currentTournament.participants.length !== 0) {
+            currentTournament.participants.forEach( (participant) => {
+              const userRound: UserRound = {
+                user: participant.user,
+                userId: participant.userId,
+                round: roundo,
+                roundId: roundo.id,
+                userPoints: 0
+              };
+              roundo.roundPoints = [];
+              roundo.roundPoints.push(userRound);
+            });
+            this.roundService.updateRound(roundo);
+          }
         }
       );
-
-    } else {
     }
   }
 }
