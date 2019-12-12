@@ -22,14 +22,17 @@ export class TournamentComponent implements OnInit {
   loading: boolean;
   submitted = false;
   round: Round;
-
+  favTournaments: UserTour[] = [];
+  showFavorites: boolean;
   constructor(private route: ActivatedRoute,
               private tourService: TournamentService,
               private roundService: RoundService,
               private authService: AuthenticationService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
+    this.showFavorites = false;
     this.loggedInUser = this.authService.getUser();
     this.getTour();
   }
@@ -44,13 +47,13 @@ export class TournamentComponent implements OnInit {
         this.tourService.updateTour(this.tournament);
         this.roundService.updateRound(this.round);
         this.loading = false;
+        this.showOnlyFavorites();
       });
-
   }
 
   isInTournament(): boolean {
     let isIn = false;
-    this.tournament.participants.forEach( (participant) => {
+    this.tournament.participants.forEach((participant) => {
       if (participant.userId === this.loggedInUser.id) {
         isIn = true;
       }
@@ -88,7 +91,7 @@ export class TournamentComponent implements OnInit {
   }
 
   getActiveRound(): void {
-    this.tournament.rounds.forEach( (round) => {
+    this.tournament.rounds.forEach((round) => {
       if (this.round === undefined) {
         this.round = round;
       } else if (this.round.roundNumber < round.roundNumber) {
@@ -106,5 +109,36 @@ export class TournamentComponent implements OnInit {
         }
       });
     });
+  }
+  showOnlyFavorites(): void {
+    const user = this.loggedInUser;
+    this.tournament.participants.forEach(participant => {
+      user.following.forEach( follower => {
+        if (follower.followId === participant.userId) {
+          this.favTournaments.push(participant);
+        }
+      });
+    });
+  }
+  changeShowFavorites(): void {
+    if (!this.showFavorites) {
+      this.showFavorites = true;
+    } else {
+      this.showFavorites = false;
+      console.log(this.tournament.name);
+      this.logTournement();
+      this.loading = false;
+      console.log(this.tournament.name);
+    }
+  }
+
+  logTournement() {
+    console.log(this.tournament.name);
+  }
+
+  clickedTheButton() {
+    if (this.tournament) {
+      console.log(this.tournament.name);
+    }
   }
 }
