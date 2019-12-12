@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {User} from './User.model';
-import {environment} from '../../environments/environment';
-import {AuthenticationService} from './services/authentication.service';
+import {User} from '../../Shared/User.model';
+
+import {AuthenticationService} from '../../Shared/services/authentication.service';
+import {environment} from '../../../environments/environment';
 
 
 const httpOptions = {

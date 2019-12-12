@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RoundService} from '../../rounds/shared/round.service';
-import {UserService} from '../../Shared/user.service';
+import {UserService} from '../../users/shared/user.service';
 import {Match} from '../../Shared/Match.model';
 import {Round} from '../../Shared/Round.model';
 import {Form, FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
