@@ -1,32 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class=navbar-collapse collapse w-100 order-1 order-md dual-collapse2>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Hjem</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/users">Brugere</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/rules">Regler</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/tournamentList">Alle turneringer</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/user-tips/{{round.id}}">My tips</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/addTournament">Tilføj en turnering</a>
-      </li>
-    </ul>
-  </div>
-  <div class="navbar-collapse collapse dual-collapse2">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <p style="color: silver"> You are logged in as {{getUser().firstname}} {{getUser().lastname}}</p>
-        <a (click)="logout()" class="glyphicon glyphicon-log-out" href=""> Log ud</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class=navbar-collapse collapse w-100 order-1 order-md dual-collapse2>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">Hjem</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/users">Brugere</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/rules">Regler</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/tournamentList">Alle turneringer</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/user-tips-list/1">My tips</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/addTournament">Tilføj en turnering</a>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-collapse collapse dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <p style="color: silver"> You are logged in as {{getUser().firstname}} {{getUser().lastname}}</p>
+          <a (click)="logout()" class="glyphicon glyphicon-log-out" href=""> Log ud</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

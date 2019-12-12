@@ -32,7 +32,8 @@ export class UserTipsComponent implements OnInit {
               private router: Router,
               private formBuilder: FormBuilder,
               private umService: UserMatchService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private matchService: MatchService) {
     this.matchForm = this.formBuilder.group({
       credentials: new FormArray([])
     });
@@ -40,23 +41,15 @@ export class UserTipsComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.authService.getUser();
-    this.getRound();
+    this.getMatches();
   }
 
-  getRound() {
-    const roundId = +this.route.snapshot.paramMap.get('id');
-    this.umService.getUserMatches(this.currentUser.id, roundId);
-    this.roundService.getCurrentRoundSearchedMatches(this.currentUser.id)
-      .subscribe(roundFromRest => {
-        this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
-        this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
-        for (const match of roundFromRest[0].matches) {
-          for (const tips of match.tips) {
-            this.tipsForUser.push(tips);
-          }
-        }
+  getMatches() {
+    this.matchService.getMatches()
+      .subscribe(matchesFromRest => {
+        this.matches = matchesFromRest;
         this.createFormGroups();
-      });
+        });
   }
 
   get f() {
@@ -68,16 +61,16 @@ export class UserTipsComponent implements OnInit {
   }
 
   createFormGroups() {
-    for (const tip of this.tipsForUser) {
+    for (const match of this.matches) {
       this.t.push(this.formBuilder.group({
         homeTip: [''],
         guestTip: [''],
         rating: [''],
-        userId: [tip.userId],
-        matchId: [tip.matchId],
+        userId: [this.currentUser.id],
+        matchId: [match.id],
       }));
     }
-  }
+    }
 
   save() {
     const listToSend = this.matchForm.controls.credentials.value;

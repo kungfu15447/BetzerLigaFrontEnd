@@ -29,6 +29,8 @@ import { TournamentAddComponent } from './tournaments/tournament-add/tournament-
 import { TournamentListComponent } from './tournaments/tournament-list/tournament-list.component';
 import {HttpErrorInterceptor} from './interceptors/http-error.interceptor';
 import {BsDatepickerModule} from "ngx-bootstrap";
+import { UserTipsUpdateComponent } from './matches/user-tips-update/user-tips-update.component';
+import { UserTipsListComponent } from './matches/user-tips-list/user-tips-list.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import {BsDatepickerModule} from "ngx-bootstrap";
     MatchesAddComponent,
     MatchesUpdateComponent,
     TournamentAddComponent,
-    TournamentListComponent
+    TournamentListComponent,
+    UserTipsUpdateComponent,
+    UserTipsListComponent
   ],
   imports: [
     BrowserModule,

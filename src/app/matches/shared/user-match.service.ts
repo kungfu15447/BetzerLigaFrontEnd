@@ -29,6 +29,6 @@ export class UserMatchService {
   }
 
   getUserMatches(userId: number, roundId: number): Observable<UserMatch[]> {
-    return this.http.get<UserMatch[]>(this.apiUrl + 'userMatches?userId=' + userId + 'roundId=' + roundId);
+    return this.http.get<UserMatch[]>(this.apiUrl + 'userMatches?userId=' + userId + '&roundId=' + roundId);
   }
 }

@@ -13,13 +13,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
               private roundService: RoundService) {}
-  round: Round;
-  currentUser;
+  currentUser: User;
   ngOnInit() {
     this.currentUser = this.authService.getUser();
-    this.roundService.getCurrentRoundSearchedMatches(this.currentUser.id).subscribe(roundFromRest => {
-      this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
-      });
   }
 
   logout(): void {
