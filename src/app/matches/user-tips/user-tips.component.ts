@@ -7,7 +7,7 @@ import {Form, FormArray, FormBuilder, FormControl, FormGroup} from '@angular/for
 import {AuthenticationService} from '../../Shared/services/authentication.service';
 import {User} from '../../Shared/User.model';
 import {UserMatch} from '../../Shared/UserMatch.model';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {templateVisitAll} from '@angular/compiler';
 import {UserMatchService} from '../shared/user-match.service';
 import {MatchService} from '../shared/matchService';
@@ -31,7 +31,9 @@ export class UserTipsComponent implements OnInit {
               private userService: UserService,
               private router: Router,
               private formBuilder: FormBuilder,
-              private umService: UserMatchService) {
+              private umService: UserMatchService,
+              private route: ActivatedRoute,
+              private matchService: MatchService) {
     this.matchForm = this.formBuilder.group({
       credentials: new FormArray([])
     });
@@ -39,21 +41,15 @@ export class UserTipsComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.authService.getUser();
-    this.getRound();
+    this.getMatches();
   }
 
-  getRound() {
-    this.roundService.getCurrentRoundSearchedMatches(this.currentUser.id)
-      .subscribe(roundFromRest => {
-        this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
-        this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
-        for (const match of roundFromRest[0].matches) {
-          for (const tips of match.tips) {
-            this.tipsForUser.push(tips);
-          }
-        }
+  getMatches() {
+    this.matchService.getMatches()
+      .subscribe(matchesFromRest => {
+        this.matches = matchesFromRest;
         this.createFormGroups();
-      });
+        });
   }
 
   get f() {
@@ -65,16 +61,16 @@ export class UserTipsComponent implements OnInit {
   }
 
   createFormGroups() {
-    for (const tip of this.tipsForUser) {
+    for (const match of this.matches) {
       this.t.push(this.formBuilder.group({
         homeTip: [''],
         guestTip: [''],
         rating: [''],
-        userId: [tip.userId],
-        matchId: [tip.matchId],
+        userId: [this.currentUser.id],
+        matchId: [match.id],
       }));
     }
-  }
+    }
 
   save() {
     const listToSend = this.matchForm.controls.credentials.value;
