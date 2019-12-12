@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {User} from '../User.model';
+import {RoundService} from '../../rounds/shared/round.service';
+import {Round} from '../Round.model';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +11,11 @@ import {User} from '../User.model';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) {}
-
+  constructor(private authService: AuthenticationService,
+              private roundService: RoundService) {}
+  currentUser: User;
   ngOnInit() {
+    this.currentUser = this.authService.getUser();
   }
 
   logout(): void {

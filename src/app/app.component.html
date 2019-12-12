@@ -3,12 +3,12 @@
   <div *ngIf="!IsUserLoggedIn()">
     <div>
       <div style="text-align: center;">
-      <h1>Welcome to BetzerLiga</h1>
+        <h1>Welcome to BetzerLiga</h1>
       </div>
     </div>
   </div>
   <div *ngIf="IsUserLoggedIn()">
-      <app-navbar></app-navbar>
+    <app-navbar></app-navbar>
   </div>
 </div>
 <router-outlet></router-outlet>
