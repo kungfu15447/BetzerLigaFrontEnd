@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {User} from '../User.model';
+import {RoundService} from '../../rounds/shared/round.service';
+import {Round} from '../Round.model';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +11,15 @@ import {User} from '../User.model';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService) {}
-
+  constructor(private authService: AuthenticationService,
+              private roundService: RoundService) {}
+  round: Round;
+  currentUser;
   ngOnInit() {
+    this.currentUser = this.authService.getUser();
+    this.roundService.getCurrentRoundSearchedMatches(this.currentUser.id).subscribe(roundFromRest => {
+      this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
+      });
   }
 
   logout(): void {

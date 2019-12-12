@@ -7,7 +7,7 @@ import {Form, FormArray, FormBuilder, FormControl, FormGroup} from '@angular/for
 import {AuthenticationService} from '../../Shared/services/authentication.service';
 import {User} from '../../Shared/User.model';
 import {UserMatch} from '../../Shared/UserMatch.model';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {templateVisitAll} from '@angular/compiler';
 import {UserMatchService} from '../shared/user-match.service';
 import {MatchService} from '../shared/matchService';
@@ -31,7 +31,8 @@ export class UserTipsComponent implements OnInit {
               private userService: UserService,
               private router: Router,
               private formBuilder: FormBuilder,
-              private umService: UserMatchService) {
+              private umService: UserMatchService,
+              private route: ActivatedRoute) {
     this.matchForm = this.formBuilder.group({
       credentials: new FormArray([])
     });
@@ -43,6 +44,8 @@ export class UserTipsComponent implements OnInit {
   }
 
   getRound() {
+    const roundId = +this.route.snapshot.paramMap.get('id');
+    this.umService.getUserMatches(this.currentUser.id, roundId);
     this.roundService.getCurrentRoundSearchedMatches(this.currentUser.id)
       .subscribe(roundFromRest => {
         this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
