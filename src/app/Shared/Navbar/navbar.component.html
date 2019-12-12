@@ -14,11 +14,13 @@
         <a class="nav-link" href="/tournamentList">Alle turneringer</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/user-tips">My tips</a>
+        <a class="nav-link" href="/user-tips">Mine tips</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/addTournament">Tilføj en turnering</a>
-      </li>
+      <div *ngIf="getUser().isAdmin">
+        <li class="nav-item active">
+          <a class="nav-link" href="/addTournament">Tilføj en turnering</a>
+        </li>
+      </div>
     </ul>
   </div>
   <div>

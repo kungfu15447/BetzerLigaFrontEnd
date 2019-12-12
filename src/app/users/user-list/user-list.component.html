@@ -1,5 +1,7 @@
-<h2>User list</h2>
-<button class="btn btn-primary" routerLink="/user-add">Add user</button>
+<h2>Bruger liste</h2>
+<div *ngIf="loggedInUser.isAdmin">
+  <button class="btn btn-primary" routerLink="/user-add">Tilføj bruger</button>
+</div>
 <ul class="list-group" *ngIf="users">
   <li class="list-group-item" *ngFor="let user of users">
     <div *ngIf="user.id !== loggedInUser.id">
