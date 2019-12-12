@@ -1,0 +1,25 @@
+<div class="container" *ngIf="tipsForUser">
+  <h2>Dine tips for denne runde</h2>
+    <div class="row" *ngFor="let tip of tipsForUser">
+      <table class="table-bordered">
+        <thead class="header">
+        <tr>
+          <th class="theader">{{tip.match.homeTeam}}</th>
+          <th class="theader">{{tip.match.guestTeam}}</th>
+          <th class="theader">Rating</th>
+        </tr>
+        </thead>
+        <tbody class="body">
+        <tr>
+          <td>{{tip.homeTip}}</td>
+          <td>{{tip.guestTip}}</td>
+          <td>{{tip.rating}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<div class="container" *ngIf="!tipsForUser">
+  <app-user-tips></app-user-tips>
+</div>

@@ -65,7 +65,6 @@ export class MatchesAddComponent implements OnInit {
     for (const match of this.listOfMatches) {
       match.roundId = round.id;
     }
-    debugger;
     this.matchService.addMatch(this.listOfMatches)
       .subscribe();
   }
