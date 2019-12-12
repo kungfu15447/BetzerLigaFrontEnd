@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "bootstrap": "^3.4.1",
+    "bootstrap-icons": "^1.0.0-alpha",
     "hammerjs": "^2.0.8",
     "ngx-bootstrap": "^5.2.0",
     "rxjs": "~6.4.0",
