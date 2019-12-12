@@ -1,6 +1,5 @@
 import {Round} from './Round.model';
 import {UserTour} from './UserTour.model';
-import DateTimeFormat = Intl.DateTimeFormat;
 
 export interface Tournament {
   id: number;

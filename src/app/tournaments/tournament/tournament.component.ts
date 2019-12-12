@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Tournament} from '../../Shared/Tournament.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TournamentService} from '../shared/tournament.service';
-import {partition} from 'rxjs/operators';
-import {User} from '../../Shared/User.model';
-import {AuthenticationService} from '../../Shared/services/authentication.service';
-import {UserTour} from '../../Shared/UserTour.model';
 import {Round} from '../../Shared/Round.model';
 import {RoundService} from '../../rounds/shared/round.service';
+import {totalmem} from 'os';
+import {FormControl, FormGroup} from '@angular/forms';
+import {AuthenticationService} from '../../Shared/services/authentication.service';
+import {partition} from 'rxjs/operators';
+import {User} from '../../Shared/User.model';
+import {UserTour} from '../../Shared/UserTour.model';
 
 @Component({
   selector: 'app-tournament',
@@ -17,13 +19,15 @@ import {RoundService} from '../../rounds/shared/round.service';
 export class TournamentComponent implements OnInit {
   loggedInUser: User;
   tournament: Tournament;
-  round: Round;
   loading: boolean;
+  submitted = false;
+  round: any = {};
+
   constructor(private route: ActivatedRoute,
               private tourService: TournamentService,
-              private authService: AuthenticationService,
-              private roundService: RoundService
-  ) { }
+              private roundService: RoundService,
+              private authService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     this.loggedInUser = this.authService.getUser();
@@ -88,7 +92,7 @@ export class TournamentComponent implements OnInit {
       if (this.round === undefined) {
         this.round = round;
       } else if (this.round.roundNumber < round.roundNumber) {
-        const tippingDeadlineTime = new Date(round.TippingDeadLine).valueOf();
+        const tippingDeadlineTime = new Date(round.tippingDeadLine).valueOf();
         const currentDateTime = new Date().valueOf();
         if (tippingDeadlineTime < currentDateTime) {
           this.round = round;
@@ -96,5 +100,4 @@ export class TournamentComponent implements OnInit {
       }
     });
   }
-
 }

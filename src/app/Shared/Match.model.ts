@@ -2,12 +2,13 @@ import {Round} from './Round.model';
 import {UserMatch} from './UserMatch.model';
 
 export interface Match {
-  id: number;
-  homeTeam: string;
-  homeScore: number;
-  guestTeam: string;
-  guestScore: number;
-  startDate: Date;
-  round: Round[];
-  tips: UserMatch[];
+  Id: number;
+  HomeTeam: string;
+  HomeScore: number;
+  GuestTeam: string;
+  GuestScore: number;
+  StartDate: Date;
+  Round: Round;
+  RoundId: number;
+  Tips?: UserMatch[];
 }

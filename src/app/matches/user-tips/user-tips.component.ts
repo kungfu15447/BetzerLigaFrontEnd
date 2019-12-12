@@ -7,10 +7,10 @@ import {Form, FormArray, FormBuilder, FormControl, FormGroup} from '@angular/for
 import {AuthenticationService} from '../../Shared/services/authentication.service';
 import {User} from '../../Shared/User.model';
 import {UserMatch} from '../../Shared/UserMatch.model';
-import {variable} from '@angular/compiler/src/output/output_ast';
 import {Router} from '@angular/router';
 import {templateVisitAll} from '@angular/compiler';
 import {UserMatchService} from '../shared/user-match.service';
+import {MatchService} from '../shared/matchService';
 
 @Component({
   selector: 'app-user-tips',
@@ -48,7 +48,7 @@ export class UserTipsComponent implements OnInit {
         this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
         this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
         for (const match of roundFromRest[0].matches) {
-          for (const tips of match.tips) {
+          for (const tips of match.Tips) {
             this.tipsForUser.push(tips);
           }
         }
@@ -78,7 +78,6 @@ export class UserTipsComponent implements OnInit {
 
   save() {
     const listToSend = this.matchForm.controls.credentials.value;
-    debugger;
     this.umService.addUserMatch(listToSend);
   }
 }

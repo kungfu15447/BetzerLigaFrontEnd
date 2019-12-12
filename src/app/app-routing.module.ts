@@ -41,7 +41,7 @@ const routes: Routes = [
   {path: 'user-tips', component: UserTipsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'rules', component: RulesComponent, canActivate: [AuthGuard]},
-  {path: 'add-match', component: MatchesAddComponent},
+  {path: 'add-MatchRound/:id', component: MatchesAddComponent, canActivate: [AuthGuard]},
   {path: 'addTournament', component: TournamentAddComponent},
   {path: 'tournamentList', component: TournamentListComponent}
 ];

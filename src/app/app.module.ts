@@ -6,7 +6,7 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { UserListComponent } from './users/user-list/user-list.component';
 import { RoundsListComponent } from './rounds/rounds-list/rounds-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {UserService} from './Shared/user.service';
 import { NavbarComponent } from './Shared/Navbar/navbar.component';
 import { TournamentComponent } from './tournaments/tournament/tournament.component';
@@ -27,6 +27,8 @@ import { MatchesAddComponent } from './matches/matches-add/matches-add.component
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TournamentAddComponent } from './tournaments/tournament-add/tournament-add.component';
 import { TournamentListComponent } from './tournaments/tournament-list/tournament-list.component';
+import {HttpErrorInterceptor} from './interceptors/http-error.interceptor';
+import {BsDatepickerModule} from "ngx-bootstrap";
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { TournamentListComponent } from './tournaments/tournament-list/tournamen
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot()
   ],
@@ -66,7 +70,12 @@ import { TournamentListComponent } from './tournaments/tournament-list/tournamen
     AuthenticationService,
     UserService,
     TournamentComponent,
-    TournamentLeaderboardComponent
+    TournamentLeaderboardComponent,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
