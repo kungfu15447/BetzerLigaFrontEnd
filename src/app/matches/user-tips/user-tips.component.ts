@@ -48,7 +48,7 @@ export class UserTipsComponent implements OnInit {
         this.round = roundFromRest.length > 0 ? roundFromRest[0] : undefined;
         this.matches = roundFromRest.length > 0 ? roundFromRest[0].matches : undefined;
         for (const match of roundFromRest[0].matches) {
-          for (const tips of match.Tips) {
+          for (const tips of match.tips) {
             this.tipsForUser.push(tips);
           }
         }
