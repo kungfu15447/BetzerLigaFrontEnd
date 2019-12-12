@@ -18,6 +18,7 @@ import {UserRoundsListComponent} from './rounds/user-rounds-list/user-rounds-lis
 import {MatchesAddComponent} from './matches/matches-add/matches-add.component';
 import {TournamentAddComponent} from './tournaments/tournament-add/tournament-add.component';
 import {TournamentListComponent} from './tournaments/tournament-list/tournament-list.component';
+import {RoundMatchComponent} from './round-match/round-match.component';
 import {UserTipsListComponent} from './matches/user-tips-list/user-tips-list.component';
 import {TournamentUpdateComponent} from './tournaments/tournament-update/tournament-update.component';
 
@@ -33,11 +34,11 @@ const routes: Routes = [
   {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'rounds', component: RoundsListComponent},
-  {path: 'rounds/:id', component: RoundsDetailsComponent},
-  {path: 'round-add', component: RoundAddComponent},
-  {path: 'round-update/:id', component: RoundUpdateComponent},
-  {path: 'user-rounds-list', component: UserRoundsListComponent},
+  {path: 'rounds', component: RoundsListComponent, canActivate: [AuthGuard]},
+  {path: 'rounds/:id', component: RoundsDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'round-add', component: RoundAddComponent, canActivate: [AuthGuard]},
+  {path: 'round-update/:id', component: RoundUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'user-rounds-list', component: UserRoundsListComponent, canActivate: [AuthGuard]},
   {path: 'users', component: UserListComponent, canActivate: [AuthGuard]},
   {path: 'users/:id', component: UserDetailsComponent, canActivate: [AuthGuard]},
   {path: 'user-tips-list/:id', component: UserTipsListComponent},
@@ -47,7 +48,8 @@ const routes: Routes = [
   {path: 'add-MatchRound/:id', component: MatchesAddComponent, canActivate: [AuthGuard]},
   {path: 'addTournament', component: TournamentAddComponent},
   {path: 'tournamentList', component: TournamentListComponent},
-  {path: 'tournament-update/:id', component: TournamentUpdateComponent}
+  {path: 'tournament-update/:id', component: TournamentUpdateComponent},
+  {path: 'RoundMatch', component: RoundMatchComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

@@ -28,7 +28,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TournamentAddComponent } from './tournaments/tournament-add/tournament-add.component';
 import { TournamentListComponent } from './tournaments/tournament-list/tournament-list.component';
 import {HttpErrorInterceptor} from './interceptors/http-error.interceptor';
-import {BsDatepickerModule} from "ngx-bootstrap";
+import {BsDatepickerModule} from 'ngx-bootstrap';
+import { RoundMatchComponent } from './round-match/round-match.component';
 import { UserTipsUpdateComponent } from './matches/user-tips-update/user-tips-update.component';
 import { UserTipsListComponent } from './matches/user-tips-list/user-tips-list.component';
 import { TournamentUpdateComponent } from './tournaments/tournament-update/tournament-update.component';
@@ -55,6 +56,7 @@ import { TournamentUpdateComponent } from './tournaments/tournament-update/tourn
     MatchesUpdateComponent,
     TournamentAddComponent,
     TournamentListComponent,
+    RoundMatchComponent,
     UserTipsUpdateComponent,
     UserTipsListComponent,
     TournamentUpdateComponent
@@ -66,7 +68,6 @@ import { TournamentUpdateComponent } from './tournaments/tournament-update/tourn
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot()
