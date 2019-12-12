@@ -1,6 +1,7 @@
 <div *ngIf="tournament && !loading">
   <div *ngIf="authService.getUser().isAdmin" class="input-group mb-3">
-    <button class="btn btn-primary" style="float: right" routerLink="/add-MatchRound/{{tournament.id}}" id="absolute">Tilføj runde</button>
+    <button class="btn btn-primary" style="float: right" routerLink="/RoundMatch/{{round.id}}">Rediger runde</button>
+    <button class="btn btn-primary" style="float: right" routerLink="/add-MatchRound/{{tournament.id}}">tilføj runde</button>
   </div>
   <h2>Turnering: {{tournament.name}}</h2>
   <h4>Mængden af runder: {{tournament.numberOfRounds}}</h4>

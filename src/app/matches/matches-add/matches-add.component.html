@@ -30,15 +30,18 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let m of listOfMatches">
-                  <td>{{m.GuestTeam}}</td>
-                  <td>{{m.HomeTeam}}</td>
-                  <td>{{m.StartDate}}</td>
-                  <button class="btn btn-danger" (click)="removeFromList(m)">Fjern kamp</button>
+                  <td>{{m.guestTeam}}</td>
+                  <td>{{m.homeTeam}}</td>
+                  <td>{{m.startDate}}</td>
+                  <button class="btn btn-danger" (click)="removeFromList(m)">Remove match</button>
                 </tr>
                 </tbody>
               </table>
             </div>
           </div>
+        </div>
+        <div *ngIf="listOfMatches.length == 12">
+          <button type="submit" (click)="addToRound()">add to round</button>
         </div>
       </div>
     </div>

@@ -18,13 +18,13 @@ export class MatchesAddComponent implements OnInit {
   loading: boolean;
   submitted = false;
   lookupForm = new FormGroup({
-    HomeTeam: new FormControl(''),
-    GuestTeam: new FormControl(''),
-    StartDate: new FormControl(''),
-    HomeScore: new FormControl(''),
-    GuestScore: new FormControl(''),
-    Round: new FormControl(''),
-  });
+  HomeTeam: new FormControl(''),
+  GuestTeam: new FormControl(''),
+  StartDate: new FormControl(''),
+  HomeScore: new FormControl(''),
+  GuestScore: new FormControl(''),
+  RoundId: new FormControl(''),
+});
   roundForm = new FormGroup({
     roundNumber: new FormControl(''),
     totalGoals: new FormControl(''),
@@ -33,6 +33,7 @@ export class MatchesAddComponent implements OnInit {
     tippingDeadLine: new FormControl('')
   });
 
+  round: Round;
   matchValues = ['HomeTeam', 'GuestTeam', 'StartDate'];
   listOfMatches: Match[] = [];
 
@@ -46,7 +47,7 @@ export class MatchesAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTour();
+
   }
 
   addToList() {
@@ -94,13 +95,14 @@ export class MatchesAddComponent implements OnInit {
   }
 
   addRound(): void {
+    this.matchService.addMatch(this.listOfMatches);
+    this.getTour();
     this.submitted = true;
     const currentTournament = this.tournament;
     const roundFromFields = this.roundForm.value;
     roundFromFields.totalGoals = 0;
     roundFromFields.tournamentId = currentTournament.id;
     roundFromFields.roundNumber = (currentTournament.rounds.length + 1);
-    debugger;
     if (currentTournament.rounds.length < currentTournament.numberOfRounds || roundFromFields.roundNumber !== 0) {
       this.roundService.addRound(roundFromFields).subscribe(
         roundo => {

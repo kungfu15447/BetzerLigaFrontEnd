@@ -20,14 +20,14 @@
         <li class="nav-item active">
           <a class="nav-link" href="/addTournament">Tilføj en turnering</a>
         </li>
-      </ul>
-    </div>
-    <div class="navbar-collapse collapse dual-collapse2">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <p style="color: silver"> You are logged in as {{getUser().firstname}} {{getUser().lastname}}</p>
-          <a (click)="logout()" class="glyphicon glyphicon-log-out" href=""> Log ud</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    </ul>
+  </div>
+  <div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <p style="color: silver"> You are logged in as {{getUser().firstname}} {{getUser().lastname}}</p>
+        <a (click)="logout()" class="glyphicon glyphicon-log-out" href=""></a>
+      </li>
+    </ul>
+  </div>
+</nav>
