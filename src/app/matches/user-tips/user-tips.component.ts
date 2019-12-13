@@ -74,6 +74,8 @@ export class UserTipsComponent implements OnInit {
 
   save() {
     const listToSend = this.matchForm.controls.credentials.value;
-    this.umService.addUserMatches(listToSend);
+    this.umService.addUserMatches(listToSend).subscribe(() => {
+      this.router.navigateByUrl('/user-tips-list/' + this.route.snapshot.paramMap.get('id'));
+    });
   }
 }

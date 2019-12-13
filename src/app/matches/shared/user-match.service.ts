@@ -24,8 +24,8 @@ export class UserMatchService {
 
   apiUrl = environment.apiUrl;
 
-  addUserMatches(userMatches: UserMatch[]) {
-    this.http.post<UserMatch>(this.apiUrl + 'userMatches', userMatches);
+  addUserMatches(userMatches: UserMatch[]): Observable<UserMatch[]> {
+    return this.http.post<UserMatch[]>(this.apiUrl + 'userMatches', userMatches);
   }
 
   getUserMatches(userId: number, roundId: number): Observable<UserMatch[]> {
