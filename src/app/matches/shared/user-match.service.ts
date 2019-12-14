@@ -33,7 +33,6 @@ export class UserMatchService {
   }
 
   updateUserMatches(userMatches: UserMatch[]): Observable<UserMatch[]> {
-    debugger;
     return this.http.put<UserMatch[]>(this.apiUrl + 'userMatches', userMatches);
   }
 }
