@@ -1,5 +1,5 @@
 
-<div class="container" *ngIf="tipsForUser">
+<div class="container" *ngIf="matches">
   <form [formGroup]="matchForm" (ngSubmit)="save()">
       <div *ngFor="let formGroup of t.controls; let i = index">
         <div [formGroup]="formGroup">

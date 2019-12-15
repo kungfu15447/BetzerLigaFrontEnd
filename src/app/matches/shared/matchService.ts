@@ -28,7 +28,7 @@ export class MatchService {
 
   getMatches(): Observable<Match[]> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.get<Match[]>(this.URL + 'matches', httpOptions);
+    return this.http.get<Match[]>(this.URL + 'matches' , httpOptions);
   }
   getMatch(id: number): Observable<Match[]> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
@@ -41,5 +41,9 @@ export class MatchService {
   updateMatch(match: Match[]): Observable<Match[]> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
     return this.http.put<Match[]>(this.URL + 'matches/' , match);
+  }
+  getMatchesFromRound(userId: number, roundId: number): Observable<Match[]> {
+    httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
+    return this.http.get<Match[]>(this.URL + 'matches?userId=' + userId + '&roundId=' + roundId);
   }
 }

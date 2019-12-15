@@ -45,7 +45,8 @@ export class UserTipsComponent implements OnInit {
   }
 
   getMatches() {
-    this.matchService.getMatches()
+    const roundId = +this.route.snapshot.paramMap.get('id');
+    this.matchService.getMatchesFromRound(this.currentUser.id, roundId)
       .subscribe(matchesFromRest => {
         this.matches = matchesFromRest;
         this.createFormGroups();
