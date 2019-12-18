@@ -27,7 +27,7 @@ export class TournamentListComponent implements OnInit {
 
   getTours(): void {
     this.loading = true;
-    this.tourService.getAllTour('fisk')
+    this.tourService.getAllTour()
       .pipe(
         take(1)
       )

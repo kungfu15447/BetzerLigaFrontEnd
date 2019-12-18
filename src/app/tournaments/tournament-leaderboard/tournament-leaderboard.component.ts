@@ -33,7 +33,7 @@ export class TournamentLeaderboardComponent implements OnInit {
 
   getOnGoingTour(): void {
     this.loading = true;
-    this.tourService.getAllTour('currentTournament')
+    this.tourService.getAllTour()
       .pipe(
         take(1)
       )
