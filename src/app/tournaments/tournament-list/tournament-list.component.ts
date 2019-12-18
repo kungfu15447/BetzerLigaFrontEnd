@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Tournament} from '../../Shared/Tournament.model';
 import {TournamentService} from '../shared/tournament.service';
 import {take} from 'rxjs/operators';
-import {start} from 'repl';
+import {AuthenticationService} from '../../Shared/services/authentication.service';
+import {User} from '../../Shared/User.model';
 
 @Component({
   selector: 'app-tournament-list',
@@ -14,16 +15,19 @@ export class TournamentListComponent implements OnInit {
   onGoingTournaments: Tournament[] = [];
   newTournaments: Tournament[] = [];
   loading: boolean;
+  loggedInUser: User;
 
-  constructor(private tourService: TournamentService) { }
+  constructor(private tourService: TournamentService,
+              private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.getTours();
+    this.loggedInUser = this.authService.getUser();
   }
 
   getTours(): void {
     this.loading = true;
-    this.tourService.getAllTour('fisk')
+    this.tourService.getAllTour()
       .pipe(
         take(1)
       )
@@ -36,6 +40,7 @@ export class TournamentListComponent implements OnInit {
   }
 
   getOnGoingTours(): void {
+    this.onGoingTournaments = [];
     const currentDateTime = new Date().valueOf();
     this.tournaments.forEach( (tournament) => {
       const startDateTime = new Date(tournament.startDate).valueOf();
@@ -46,6 +51,7 @@ export class TournamentListComponent implements OnInit {
   }
 
   getNewTournaments(): void {
+    this.newTournaments = [];
     const currentDateTime = new Date().valueOf();
     this.tournaments.forEach((tournament) => {
       const startDateTime = new Date(tournament.startDate).valueOf();
@@ -53,5 +59,12 @@ export class TournamentListComponent implements OnInit {
         this.newTournaments.push(tournament);
       }
     });
+  }
+
+  deleteTour(id: number): void {
+    this.tourService.deleteTour(id)
+      .subscribe( () => {
+        this.getTours();
+      });
   }
 }

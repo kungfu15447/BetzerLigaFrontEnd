@@ -13,7 +13,16 @@
     <tbody>
     <tr *ngFor="let tournament of onGoingTournaments">
       <td>{{onGoingTournaments.indexOf(tournament)+1}}</td>
-      <td><a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a></td>
+      <div *ngIf="loggedInUser.isAdmin">
+        <td>
+          <a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a>
+          <button class="btn btn-warning" routerLink="/tournament-update/{{tournament.id}}">Rediger</button>
+          <button class="btn btn-danger" (click)="deleteTour(tournament.id)">Slet</button>
+        </td>
+      </div>
+      <div *ngIf="!loggedInUser.isAdmin">
+        <td><a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a></td>
+      </div>
       <td>{{tournament.numberOfRounds}}</td>
       <td>{{tournament.startDate | date:'dd-MM-yyyy'}}</td>
       <td>{{tournament.endDate | date: 'dd-MM-yyyy'}}</td>
@@ -40,7 +49,16 @@
     <tbody>
     <tr *ngFor="let tournament of newTournaments">
       <td>{{newTournaments.indexOf(tournament)+1}}</td>
-      <td><a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a></td>
+      <div *ngIf="loggedInUser.isAdmin">
+        <td>
+          <a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a>
+          <button class="btn btn-warning" routerLink="/tournament-update/{{tournament.id}}">Rediger</button>
+          <button class="btn btn-danger" (click)="deleteTour(tournament.id)">Slet</button>
+        </td>
+      </div>
+      <div *ngIf="!loggedInUser.isAdmin">
+        <td><a routerLink="/tournament/{{tournament.id}}">{{tournament.name}}</a></td>
+      </div>
       <td>{{tournament.numberOfRounds}}</td>
       <td>{{ tournament.startDate | date:'dd-MM-yyyy'}}</td>
       <td>{{tournament.endDate | date: 'dd-MM-yyyy'}}</td>

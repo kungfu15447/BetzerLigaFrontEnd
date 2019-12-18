@@ -16,8 +16,8 @@ export class TournamentService {
     return this.http.get<Tournament>(url);
   }
 
-  getAllTour(query: string): Observable<Tournament[]> {
-    return this.http.get<Tournament[]>(this.tourURL + '?tournament=' + query);
+  getAllTour(): Observable<Tournament[]> {
+    return this.http.get<Tournament[]>(this.tourURL);
   }
 
   addTour(tour: Tournament): Observable<Tournament> {
@@ -27,5 +27,10 @@ export class TournamentService {
   updateTour(tour: Tournament): Observable<Tournament> {
     const url = `${this.tourURL}/${tour.id}`;
     return this.http.put<Tournament>(url, tour);
+  }
+
+  deleteTour(id: number): Observable<Tournament> {
+    const url = `${this.tourURL}/${id}`;
+    return this.http.delete<Tournament>(url);
   }
 }

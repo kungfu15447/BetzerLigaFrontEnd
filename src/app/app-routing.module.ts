@@ -21,6 +21,7 @@ import {TournamentListComponent} from './tournaments/tournament-list/tournament-
 import {RoundMatchComponent} from './round-match/round-match.component';
 import {UserTipsListComponent} from './matches/user-tips-list/user-tips-list.component';
 import {UserTipsUpdateComponent} from './matches/user-tips-update/user-tips-update.component';
+import {TournamentUpdateComponent} from './tournaments/tournament-update/tournament-update.component';
 
 
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path: 'addTournament', component: TournamentAddComponent, canActivate: [AuthGuard]},
   {path: 'tournamentList', component: TournamentListComponent, canActivate: [AuthGuard]},
   {path: 'RoundMatch/:id', component: RoundMatchComponent, canActivate: [AuthGuard]},
+  {path: 'tournament-update/:id', component: TournamentUpdateComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import {AuthenticationService} from '../../Shared/services/authentication.servic
 import {partition} from 'rxjs/operators';
 import {User} from '../../Shared/User.model';
 import {UserTour} from '../../Shared/UserTour.model';
+import {UserRound} from '../../Shared/UserRound.model';
 
 @Component({
   selector: 'app-tournament',
@@ -45,7 +46,9 @@ export class TournamentComponent implements OnInit {
         this.tournament = tournament;
         this.getActiveRound();
         this.tourService.updateTour(this.tournament);
-        this.roundService.updateRound(this.round);
+        if (this.round !== undefined) {
+          this.roundService.updateRound(this.round);
+        }
         this.loading = false;
         this.showOnlyFavorites();
       });
@@ -70,7 +73,8 @@ export class TournamentComponent implements OnInit {
       totalUserPoints: 0
     };
     this.tournament.participants.push(participant);
-    this.tourService.updateTour(this.tournament).subscribe();
+    this.tourService.updateTour(this.tournament)
+      .subscribe();
   }
 
   removeFromParticipants(): void {
@@ -102,13 +106,15 @@ export class TournamentComponent implements OnInit {
         }
       }
     });
-    this.round.roundPoints.forEach( (roundPoint) =>  {
-      this.tournament.participants.forEach( (user) => {
-        if (user.userId === roundPoint.userId) {
-          roundPoint.user = user.user;
-        }
+    if (this.round !== undefined) {
+      this.round.roundPoints.forEach( (roundPoint) =>  {
+        this.tournament.participants.forEach( (user) => {
+          if (user.userId === roundPoint.userId) {
+            roundPoint.user = user.user;
+          }
+        });
       });
-    });
+    }
   }
   showOnlyFavorites(): void {
     const user = this.loggedInUser;
@@ -125,20 +131,7 @@ export class TournamentComponent implements OnInit {
       this.showFavorites = true;
     } else {
       this.showFavorites = false;
-      console.log(this.tournament.name);
-      this.logTournement();
       this.loading = false;
-      console.log(this.tournament.name);
-    }
-  }
-
-  logTournement() {
-    console.log(this.tournament.name);
-  }
-
-  clickedTheButton() {
-    if (this.tournament) {
-      console.log(this.tournament.name);
     }
   }
 }
