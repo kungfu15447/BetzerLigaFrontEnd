@@ -11,7 +11,7 @@ import {User} from '../../Shared/User.model';
 export class RoundService {
 
 
-  apiUrl = environment.apiUrl + 'rounds';
+  apiUrl = environment.baseURL + 'rounds';
 
   constructor(private http: HttpClient) { }
 

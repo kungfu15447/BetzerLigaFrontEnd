@@ -10,7 +10,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(environment.apiUrl + 'Token', { username, password })
+    return this.http.post<any>(environment.baseURL + 'Token', { username, password })
       .pipe(map(response => {
         const token = response.token
         const user = response.user;

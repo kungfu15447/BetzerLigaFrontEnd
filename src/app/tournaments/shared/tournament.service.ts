@@ -8,7 +8,7 @@ import {environment} from '../../../environments/environment';
   providedIn: 'root'
 })
 export class TournamentService {
-  private tourURL = environment.apiUrl + 'tournaments';
+  private tourURL = environment.baseURL + 'tournaments';
   constructor(private http: HttpClient) { }
 
   getTour(id: number): Observable<Tournament> {

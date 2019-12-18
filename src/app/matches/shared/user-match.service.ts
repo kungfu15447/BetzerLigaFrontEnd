@@ -22,7 +22,7 @@ export class UserMatchService {
               private authenticationService: AuthenticationService) {
   }
 
-  apiUrl = environment.apiUrl;
+  apiUrl = environment.baseURL;
 
   addUserMatches(userMatches: UserMatch[]): Observable<UserMatch[]> {
     return this.http.post<UserMatch[]>(this.apiUrl + 'userMatches', userMatches);
