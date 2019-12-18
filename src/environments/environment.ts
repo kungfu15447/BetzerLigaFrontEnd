@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://localhost:53548/api/'
+  baseURL: 'https://betzerliga-new.azurewebsites.net/api/'
 };
 
 /*
