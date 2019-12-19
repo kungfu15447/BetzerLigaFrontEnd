@@ -36,10 +36,10 @@ export class MatchService {
   }
   delete(id: number): Observable<any> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.delete(this.URL + 'matches/' + id );
+    return this.http.delete(this.URL + 'matches/' + id, httpOptions);
   }
   updateMatch(match: Match[]): Observable<Match[]> {
     httpOptions.headers = httpOptions.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken());
-    return this.http.put<Match[]>(this.URL + 'matches/' , match);
+    return this.http.put<Match[]>(this.URL + 'matches/' , match, httpOptions);
   }
 }
