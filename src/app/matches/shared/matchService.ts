@@ -4,7 +4,6 @@ import {environment} from '../../../environments/environment';
 import {AuthenticationService} from '../../Shared/services/authentication.service';
 import {Observable} from 'rxjs';
 import {Match} from '../../Shared/Match.model';
-import {Round} from "../../Shared/Round.model";
 
 const httpOptions = {
   headers: new HttpHeaders({
