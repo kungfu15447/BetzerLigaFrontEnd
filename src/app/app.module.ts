@@ -1,4 +1,3 @@
-import { UiSwitchModule } from 'ngx-toggle-switch';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +32,7 @@ import { RoundMatchComponent } from './round-match/round-match.component';
 import { UserTipsUpdateComponent } from './matches/user-tips-update/user-tips-update.component';
 import { UserTipsListComponent } from './matches/user-tips-list/user-tips-list.component';
 import { TournamentUpdateComponent } from './tournaments/tournament-update/tournament-update.component';
+import {UiSwitchModule} from 'ngx-ui-switch';
 
 @NgModule({
   declarations: [

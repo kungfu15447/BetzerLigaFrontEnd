@@ -15,7 +15,6 @@ import {User} from '../../Shared/User.model';
 export class TournamentLeaderboardComponent implements OnInit {
   tournaments: Tournament[] ;
   tournament: Tournament;
-  favTournaments: UserTour[] = [];
   showFavorites: boolean;
   user: User;
   loading: boolean;

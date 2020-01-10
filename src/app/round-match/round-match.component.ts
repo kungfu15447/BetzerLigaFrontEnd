@@ -16,8 +16,7 @@ export class RoundMatchComponent implements OnInit {
   loading: boolean;
   edit: boolean;
   id: number;
-  today: Date
-  aList: Match[];
+  today: Date;
 
   matchForm = new FormGroup({
     homeTeam: new FormControl(''),
