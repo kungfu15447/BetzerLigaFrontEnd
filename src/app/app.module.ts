@@ -67,10 +67,10 @@ import { TournamentUpdateComponent } from './tournaments/tournament-update/tourn
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    UiSwitchModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
-    UiSwitchModule
+    BsDropdownModule.forRoot()
   ],
   providers: [
     AuthGuard,
